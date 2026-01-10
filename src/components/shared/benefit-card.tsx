@@ -21,10 +21,16 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
         primary: {
             iconBg: 'bg-primary/10',
             iconColor: 'text-primary',
+            cardBg: 'bg-slate-800',
+            titleColor: 'text-white',
+            descColor: 'text-slate-300',
         },
         accent: {
-            iconBg: 'bg-accent/10',
-            iconColor: 'text-accent-foreground',
+            iconBg: 'bg-slate-700/50',
+            iconColor: 'text-slate-400',
+            cardBg: 'bg-slate-800',
+            titleColor: 'text-white',
+            descColor: 'text-slate-300',
         },
     };
 
@@ -32,8 +38,7 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
 
     return (
         <Card
-            variant="outline"
-            className="text-left p-6 flex items-start gap-5 bg-card"
+            className={`text-left p-6 flex items-start gap-5 ${selectedVariant.cardBg} border-slate-700`}
         >
             <div
                 className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center ${selectedVariant.iconBg}`}
@@ -41,10 +46,10 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
                 <Icon className={`w-6 h-6 ${selectedVariant.iconColor}`} />
             </div>
             <div>
-                <h4 className="font-bold text-lg text-foreground mb-1">
+                <h4 className={`font-bold text-lg ${selectedVariant.titleColor} mb-1`}>
                     {title}
                 </h4>
-                <p className="text-muted-foreground">{description}</p>
+                <p className={`${selectedVariant.descColor}`}>{description}</p>
             </div>
         </Card>
     );

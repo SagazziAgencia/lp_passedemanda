@@ -81,7 +81,7 @@ export default function FindProfessionals() {
     };
 
     return (
-        <div className="min-h-screen animate-fade-in bg-background">
+        <div className="min-h-screen animate-fade-in bg-slate-900 text-white">
             <Header />
             <Hero onlineTalentCount={shuffledPros.length} />
 
@@ -89,8 +89,8 @@ export default function FindProfessionals() {
 
                 <section className="mb-16">
                     <div className="text-center mb-10">
-                        <h2 className="text-3xl font-bold text-foreground">Como funciona?</h2>
-                        <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
+                        <h2 className="text-3xl font-bold">Como funciona?</h2>
+                        <p className="text-slate-300 mt-2 max-w-2xl mx-auto">
                             O PasseDemanda conecta quem precisa de um serviço a quem pode executá-lo,
                             recompensando quem faz a ponte.
                         </p>
@@ -144,28 +144,28 @@ export default function FindProfessionals() {
                                 description="Trabalhe com a segurança de uma plataforma que intermedia o pagamento e garante o seu recebimento."
                                 variant='accent'
                             />
-d                        </div>
+                        </div>
                     </div>
                 </section>
 
                 <section className="text-center mb-12 py-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
                         Encontre o talento ideal ou comece a ganhar
                     </h2>
-                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    <p className="text-lg text-slate-300 max-w-3xl mx-auto">
                         Navegue por profissionais validados pela comunidade ou busque por habilidades específicas para sua demanda.
                     </p>
                     <div className="mt-8 max-w-xl mx-auto">
                         <div className="relative group">
                             <div className="absolute -inset-1 bg-gradient-to-r from-accent via-primary to-accent rounded-2xl opacity-0 group-focus-within:opacity-40 blur-lg transition-opacity duration-500" />
-                            <div className="relative flex items-center bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div className="relative flex items-center bg-slate-800 rounded-xl shadow-lg overflow-hidden">
                                 <Search className="ml-5 text-muted-foreground w-5 h-5 flex-shrink-0" />
                                 <input
                                     type="text"
                                     placeholder="Buscar por serviço, habilidade ou profissional..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="flex-1 w-full px-4 py-4 bg-transparent border-none focus:ring-0 focus:outline-none text-foreground placeholder:text-muted-foreground font-medium"
+                                    className="flex-1 w-full px-4 py-4 bg-transparent border-none focus:ring-0 focus:outline-none placeholder:text-muted-foreground font-medium"
                                     aria-label="Buscar profissionais"
                                 />
                                 <Button className="m-2 rounded-lg bg-primary hover:bg-primary/90">
@@ -186,7 +186,7 @@ d                        </div>
                                     key={cat.id}
                                     variant={selectedCategory === cat.id ? 'default' : 'outline'}
                                     onClick={() => setSelectedCategory(cat.id)}
-                                    className={`rounded-xl px-5 py-2.5 text-sm transition-all duration-200 ${selectedCategory === cat.id ? 'bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20' : 'bg-card text-secondary-foreground border hover:bg-muted'}`}
+                                    className={`rounded-xl px-5 py-2.5 text-sm transition-all duration-200 ${selectedCategory === cat.id ? 'bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20' : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'}`}
                                 >
                                     {cat.label}
                                 </Button>
@@ -197,14 +197,14 @@ d                        </div>
                             <Button
                                 variant="outline"
                                 onClick={handleReshuffle}
-                                className="rounded-xl px-4 py-2.5 text-sm bg-card hover:bg-muted"
+                                className="rounded-xl px-4 py-2.5 text-sm bg-slate-800 border-slate-700 hover:bg-slate-700"
                                 title="Reordenar aleatoriamente"
                             >
                                 <Shuffle className="w-4 h-4" />
                                 <span className="hidden sm:inline ml-2">Reordenar</span>
                             </Button>
                             <span className="text-sm text-muted-foreground">
-                                <strong className="text-foreground">{filteredPros.length}</strong> resultados
+                                <strong className="text-white">{filteredPros.length}</strong> resultados
                             </span>
                         </div>
                     </div>
@@ -223,11 +223,11 @@ d                        </div>
                             ))}
                         </div>
                     ) : (
-                        <Card padding="lg" variant="outline" className="text-center border-dashed border-2 bg-muted/50">
-                            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-background flex items-center justify-center">
+                        <Card padding="lg" variant="outline" className="text-center border-dashed border-2 bg-slate-800/50 border-slate-700">
+                            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-900 flex items-center justify-center">
                                 <Search className="w-7 h-7 text-muted-foreground" />
                             </div>
-                            <h3 className="text-xl font-headline font-bold text-foreground mb-2">
+                            <h3 className="text-xl font-headline font-bold text-white mb-2">
                                 Nenhum talento encontrado
                             </h3>
                             <p className="text-muted-foreground mb-6 max-w-md mx-auto">
@@ -235,6 +235,7 @@ d                        </div>
                             </p>
                             <Button
                                 variant="outline"
+                                className="border-slate-700 hover:bg-slate-700"
                                 onClick={() => {
                                     setSearchTerm('');
                                     setSelectedCategory('all');

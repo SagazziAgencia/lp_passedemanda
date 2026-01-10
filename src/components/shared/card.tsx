@@ -30,15 +30,15 @@ export const Card: React.FC<CardProps> = ({
     className = '',
     onClick,
     hoverEffect = false,
-    padding = 'md', // Default padding changed
+    padding = 'none',
     variant = 'default',
 }) => {
     // Variant styles
     const variants: Record<string, string> = {
-        default: 'bg-card border-border shadow-sm',
-        elevated: 'bg-card border-border shadow-lg',
-        outline: 'bg-transparent border-border',
-        ghost: 'bg-muted/50 border-transparent',
+        default: 'bg-slate-800 border-slate-700 shadow-sm',
+        elevated: 'bg-slate-800 border-slate-700 shadow-lg',
+        outline: 'bg-transparent border-slate-700',
+        ghost: 'bg-slate-800/50 border-transparent',
     };
 
     // Padding styles
