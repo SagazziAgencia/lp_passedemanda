@@ -51,5 +51,3 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
 };
 
 export default BenefitCard;
-
-    
