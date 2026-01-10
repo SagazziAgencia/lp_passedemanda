@@ -23,8 +23,8 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
             iconColor: 'text-primary',
         },
         accent: {
-            iconBg: 'bg-muted/50',
-            iconColor: 'text-muted-foreground',
+            iconBg: 'bg-accent/10',
+            iconColor: 'text-accent-foreground',
         },
     };
 
