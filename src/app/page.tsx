@@ -8,6 +8,9 @@ import {
     Zap,
     Shuffle,
     ArrowRight,
+    DollarSign,
+    Target,
+    Briefcase,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -15,6 +18,7 @@ import PortfolioModal from '@/components/shared/portfolio-modal';
 import TalentCard from '@/components/shared/talent-card';
 import { MOCK_PROS, SKILL_CATEGORIES, SKILL_TO_CATEGORY } from '@/lib/constants';
 import type { Professional } from '@/types';
+import BenefitCard from '@/components/shared/benefit-card';
 
 /**
  * Shuffle array using Fisher-Yates algorithm
@@ -83,6 +87,62 @@ export default function FindProfessionals() {
 
     return (
         <div className="min-h-screen animate-fade-in container mx-auto px-4 py-8">
+            <section className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground mb-4">
+                    Para quem é o PasseDemanda?
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Uma plataforma que conecta quem precisa de um serviço a quem pode executá-lo,
+                    com um modelo de ganhos para todos.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 max-w-5xl mx-auto">
+                    <div className="flex flex-col gap-6">
+                        <h3 className="text-2xl font-headline font-semibold text-left">
+                            Para quem <span className="text-primary">passa a demanda</span>
+                        </h3>
+                         <BenefitCard
+                            icon={DollarSign}
+                            title="Ganhe 25% indicando"
+                            description="Passe uma demanda para um talento da plataforma e ganhe 25% do valor do serviço como comissão."
+                        />
+                         <BenefitCard
+                            icon={Users}
+                            title="Acesse Talentos Verificados"
+                            description="Encontre rapidamente profissionais qualificados e com portfólio validado para suas demandas."
+                        />
+                         <BenefitCard
+                            icon={Zap}
+                            title="Agilidade e Foco"
+                            description="Delegue tarefas com segurança e libere seu tempo para focar no que realmente importa para seu negócio."
+                        />
+                    </div>
+                    <div className="flex flex-col gap-6">
+                         <h3 className="text-2xl font-headline font-semibold text-left">
+                           Para quem <span className="text-accent">executa a demanda</span>
+                        </h3>
+                        <BenefitCard
+                            icon={Target}
+                            title="Receba Demandas Qualificadas"
+                            description="Conecte-se a clientes que precisam exatamente das suas habilidades e aumente seus projetos."
+                            variant="accent"
+                        />
+                        <BenefitCard
+                            icon={Briefcase}
+                            title="Construa seu Portfólio"
+                            description="Cada trabalho realizado fortalece sua reputação e atrai novas oportunidades na plataforma."
+                            variant="accent"
+                        />
+                        <BenefitCard
+                            icon={ArrowRight}
+                            title="Foque no seu Talento"
+                            description="Nós cuidamos da prospecção e do pagamento. Você se concentra em entregar um trabalho incrível."
+                            variant="accent"
+                        />
+                    </div>
+                </div>
+            </section>
+
             <section className="relative overflow-hidden rounded-2xl mb-8">
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900">
                     <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
@@ -211,7 +271,7 @@ export default function FindProfessionals() {
                         ))}
                     </div>
                 ) : (
-                    <Card className="p-16 text-center border-dashed border-2 bg-muted/50 rounded-xl">
+                    <Card variant="outline" padding="lg" className="text-center border-dashed border-2 bg-muted/50">
                         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-background flex items-center justify-center">
                             <Search className="w-7 h-7 text-muted-foreground" />
                         </div>
@@ -269,3 +329,5 @@ export default function FindProfessionals() {
         </div>
     );
 };
+
+    
