@@ -84,7 +84,7 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, index }
             </CardContent>
 
             <div className="p-4 pt-0 mt-2">
-                <Button variant="outline" className="w-full h-10 rounded-lg font-bold text-primary border-primary/50 hover:bg-primary/10 hover:text-primary transition-all">
+                <Button variant="outline" className="w-full h-10 rounded-lg font-bold text-primary border-primary/50 hover:bg-primary hover:text-primary-foreground transition-all">
                     Passar Demanda
                 </Button>
             </div>
