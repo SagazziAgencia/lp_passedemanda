@@ -57,7 +57,7 @@ export default function FindProfessionals() {
     };
 
     return (
-        <div className="min-h-screen animate-fade-in text-white">
+        <div className="min-h-screen animate-fade-in">
             <Header />
             <Hero onlineTalentCount={shuffledPros.length} />
 
