@@ -23,7 +23,7 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, index }
 
     return (
         <Card
-            className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col h-full cursor-pointer animate-fade-in"
+            className="group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col h-full cursor-pointer animate-fade-in"
             style={{ animationDelay: `${index * 50}ms` }}
             onClick={onSelect}
         >
@@ -56,34 +56,37 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, index }
                         </Badge>
                     ))}
                 </div>
-
-                <div className="space-y-1 mb-5">
-                    <div className="flex items-center gap-2 text-xs">
+                
+                <div className="mt-auto space-y-4">
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between text-xs font-medium text-muted-foreground">
+                        <span>Satisfação</span>
                         <span className="font-bold text-foreground">{satisfaction}%</span>
-                        <span className="text-muted-foreground font-medium">SATISFAÇÃO</span>
+                      </div>
+                      <Progress value={satisfaction} className="h-1.5" />
                     </div>
-                    <Progress value={satisfaction} className="h-1.5 bg-emerald-100 [&>div]:bg-emerald-500" />
-                </div>
 
-                <div className="grid grid-cols-3 gap-2 text-left my-auto pb-4">
-                    <div>
-                        <span className="text-xs text-muted-foreground font-bold uppercase">RESP.</span>
-                        <p className="text-sm font-bold text-foreground">{professional.averageResponseTime || '1h'}</p>
-                    </div>
-                     <div>
-                        <span className="text-xs text-muted-foreground font-bold uppercase">Prazo</span>
-                        <p className="text-sm font-bold text-foreground">{professional.averageDeliveryTime || '5 dias'}</p>
-                    </div>
-                    <div className="text-right">
-                         <span className="text-xs text-muted-foreground font-bold uppercase invisible">Valor</span>
-                         <p className="text-sm font-bold text-foreground">
-                            R$ {professional.hourlyRate}<span className="text-xs text-muted-foreground font-normal">/h</span>
-                        </p>
+
+                    <div className="grid grid-cols-3 gap-2 text-left my-auto pt-2">
+                        <div>
+                            <span className="text-xs text-muted-foreground font-bold uppercase">Resp.</span>
+                            <p className="text-sm font-bold text-foreground">{professional.averageResponseTime || '1h'}</p>
+                        </div>
+                         <div>
+                            <span className="text-xs text-muted-foreground font-bold uppercase">Prazo</span>
+                            <p className="text-sm font-bold text-foreground">{professional.averageDeliveryTime || '5 dias'}</p>
+                        </div>
+                        <div className="text-right">
+                             <span className="text-xs text-muted-foreground font-bold uppercase">Valor/h</span>
+                             <p className="text-sm font-bold text-foreground">
+                                R$ {professional.hourlyRate}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </CardContent>
 
-            <div className="p-4 pt-0 mt-auto">
+            <div className="p-4 pt-0">
                  <Button variant="outline" className="w-full h-10 rounded-lg font-bold text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all">
                     Passar Demanda
                 </Button>

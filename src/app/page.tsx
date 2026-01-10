@@ -211,7 +211,7 @@ export default function FindProfessionals() {
                         ))}
                     </div>
                 ) : (
-                    <Card className="p-16 text-center border-dashed border-2 bg-muted/50">
+                    <Card className="p-16 text-center border-dashed border-2 bg-muted/50 rounded-xl">
                         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-background flex items-center justify-center">
                             <Search className="w-7 h-7 text-muted-foreground" />
                         </div>
@@ -235,7 +235,7 @@ export default function FindProfessionals() {
             </section>
 
             <section className="mt-16 mb-8">
-                <Card className="p-8 md:p-12 bg-gradient-to-br from-primary to-accent border-0 text-primary-foreground overflow-hidden relative">
+                <Card className="p-8 md:p-12 bg-gradient-to-br from-primary to-accent border-0 text-primary-foreground relative rounded-xl">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-2xl" />
 

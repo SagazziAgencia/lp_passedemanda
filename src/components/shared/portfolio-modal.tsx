@@ -55,7 +55,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ professional, open, onO
                                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
                                 <a href={`mailto:${professional.contact}`} className="text-primary hover:underline break-all">
                                     {professional.contact}
-                                </a>
+                                a</a>
                             </div>
                         </div>
 
@@ -73,7 +73,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ professional, open, onO
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {professional.portfolio.length > 0 ? professional.portfolio.map((item, index) => (
                                 <a href={item.link} target="_blank" rel="noopener noreferrer" key={index}>
-                                    <Card className="overflow-hidden group transition-transform hover:-translate-y-1">
+                                    <Card className="group transition-transform hover:-translate-y-1">
                                         <CardContent className="p-0">
                                             <div className="aspect-video relative">
                                                 <Image src={item.image} alt={item.title} fill className="object-cover" data-ai-hint="website design"/>
