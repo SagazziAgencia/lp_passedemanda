@@ -119,7 +119,7 @@ export default function FindProfessionals() {
                             Passe sua demanda para
                             <br className="md:hidden" />
                             <span className="relative inline-block mx-2">
-                                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-accent/80 via-accent to-primary/80">
+                                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary/80 via-primary to-accent/80">
                                     os melhores talentos
                                 </span>
                                 <span className="absolute bottom-1 left-0 right-0 h-3 bg-primary/20 -skew-x-12 rounded" />
@@ -174,7 +174,7 @@ export default function FindProfessionals() {
                                 key={cat.id}
                                 variant={selectedCategory === cat.id ? 'default' : 'outline'}
                                 onClick={() => setSelectedCategory(cat.id)}
-                                className={`rounded-xl px-5 py-2.5 text-sm transition-all duration-200 ${selectedCategory === cat.id ? 'bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20' : 'bg-card text-secondary-foreground border-border hover:border-muted-foreground'}`}
+                                className={`rounded-xl px-5 py-2.5 text-sm transition-all duration-200 ${selectedCategory === cat.id ? 'bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20' : 'bg-card text-secondary-foreground border hover:bg-muted'}`}
                             >
                                 {cat.label}
                             </Button>
@@ -200,7 +200,7 @@ export default function FindProfessionals() {
 
             <section>
                 {filteredPros.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                         {filteredPros.map((pro, index) => (
                             <TalentCard
                                 key={pro.id}

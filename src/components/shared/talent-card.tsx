@@ -1,10 +1,9 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { CheckCircle } from 'lucide-react';
 import type { Professional } from '@/types';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
@@ -24,75 +23,71 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, index }
 
     return (
         <Card
-            className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col h-full cursor-pointer animate-fade-in"
+            className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col h-full cursor-pointer animate-fade-in"
             style={{ animationDelay: `${index * 50}ms` }}
             onClick={onSelect}
         >
-            <div className="h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-
-            <CardContent className="p-4 flex-1 flex flex-col text-sm">
-                <div className="flex items-center gap-3 mb-3">
+            <CardContent className="p-5 flex-1 flex flex-col text-sm">
+                <div className="flex items-start gap-4 mb-4">
                     <div className="relative flex-shrink-0">
-                        <Avatar className="w-12 h-12 rounded-xl">
+                        <Avatar className="w-16 h-16 rounded-full">
                             <AvatarImage src={professional.avatar} alt={professional.name} />
-                            <AvatarFallback className="rounded-xl bg-muted">{initials}</AvatarFallback>
+                            <AvatarFallback className="rounded-full bg-muted text-xl">{initials}</AvatarFallback>
                         </Avatar>
-                        <div className="absolute -bottom-1 -right-1 bg-emerald-500 rounded-full p-0.5 border-2 border-card shadow-sm">
-                            <CheckCircle className="w-3 h-3 text-white" strokeWidth={3} />
+                        <div className="absolute -bottom-1 -right-1 bg-background rounded-full p-0.5">
+                           <CheckCircle className="w-5 h-5 text-emerald-500" strokeWidth={2} />
                         </div>
                     </div>
 
                     <div className="flex-1 min-w-0">
-                        <h3 className="font-headline font-bold text-foreground text-base truncate group-hover:text-primary transition-colors">
+                        <h3 className="font-headline font-bold text-foreground text-lg truncate group-hover:text-primary transition-colors">
                             {professional.name}
                         </h3>
-                        <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide truncate">
+                        <p className="text-sm text-muted-foreground font-medium truncate">
                             {professional.role}
                         </p>
                     </div>
                 </div>
 
-                <div className="flex flex-wrap gap-1 mb-4">
+                <div className="flex flex-wrap gap-2 mb-4">
                     {professional.skills.slice(0, 3).map((skill) => (
-                        <Badge key={skill} variant="secondary" className="font-semibold">
+                        <Badge key={skill} variant="outline" className="font-semibold text-xs py-1 px-2 border-gray-200 bg-gray-50 text-gray-600">
                             {skill}
                         </Badge>
                     ))}
                 </div>
 
-                <div className="mb-4">
-                    <div className="flex justify-between items-end mb-1">
+                <div className="mb-5">
+                    <div className="flex justify-between items-center mb-1.5">
                         <span className="text-xs text-muted-foreground font-bold uppercase tracking-wider">Satisfação</span>
-                        <span className="text-sm text-foreground font-black">{satisfaction}%</span>
+                        <span className="text-sm text-foreground font-bold">{satisfaction}%</span>
                     </div>
-                    <Progress value={satisfaction} className="h-1.5" />
+                    <Progress value={satisfaction} className="h-2 bg-emerald-100 [&>div]:bg-emerald-400" />
                 </div>
 
-                <div className="flex items-center justify-between mt-auto pt-3 border-t">
-                    <div className="flex gap-4">
-                        <div className="flex flex-col">
-                            <span className="text-xs text-muted-foreground font-bold uppercase">Resp.</span>
-                            <span className="text-sm font-bold text-foreground">{professional.averageResponseTime || '30m'}</span>
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-xs text-muted-foreground font-bold uppercase">Prazo</span>
-                            <span className="text-sm font-bold text-foreground">{professional.averageDeliveryTime || '2d'}</span>
-                        </div>
+                <div className="grid grid-cols-3 gap-2 text-center border-t border-b py-3 my-auto">
+                    <div>
+                        <span className="text-xs text-muted-foreground font-bold uppercase">Resp.</span>
+                        <p className="text-sm font-bold text-foreground">{professional.averageResponseTime || '30m'}</p>
                     </div>
-
-                    <div className="text-right">
-                        <div className="text-base font-bold text-foreground">
+                     <div className='border-l border-r'>
+                        <span className="text-xs text-muted-foreground font-bold uppercase">Prazo</span>
+                        <p className="text-sm font-bold text-foreground">{professional.averageDeliveryTime || '2d'}</p>
+                    </div>
+                    <div>
+                        <span className="text-xs text-muted-foreground font-bold uppercase">Valor</span>
+                         <p className="text-sm font-bold text-foreground">
                             R$ {professional.hourlyRate}<span className="text-xs text-muted-foreground font-normal">/h</span>
-                        </div>
+                        </p>
                     </div>
                 </div>
             </CardContent>
 
-            <CardFooter className="p-4 pt-0">
-                <Button variant="outline" className="w-full h-9 rounded-lg font-semibold text-xs uppercase tracking-wider text-primary border-primary hover:bg-primary hover:text-primary-foreground transition-all">
+            <div className="p-4 pt-0 mt-2">
+                <Button variant="outline" className="w-full h-10 rounded-lg font-bold text-primary border-primary/50 hover:bg-primary/10 transition-all">
                     Passar Demanda
                 </Button>
-            </CardFooter>
+            </div>
         </Card>
     );
 };
