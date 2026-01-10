@@ -57,11 +57,11 @@ export default function FindProfessionals() {
     };
 
     return (
-        <div className="min-h-screen animate-fade-in">
+        <div className="min-h-screen animate-fade-in bg-background">
             <Header />
             <Hero onlineTalentCount={shuffledPros.length} />
 
-            <main className="container mx-auto px-4 py-8 bg-background text-foreground">
+            <main className="container mx-auto px-4 py-8 text-foreground">
                 <FindTalentSection
                     searchTerm={searchTerm}
                     onSearchTermChange={setSearchTerm}
