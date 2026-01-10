@@ -1,0 +1,77 @@
+import React from 'react';
+
+export interface CardProps {
+    /** Card content */
+    children: React.ReactNode;
+    /** Additional CSS classes */
+    className?: string;
+    /** Click handler for interactive cards */
+    onClick?: () => void;
+    /** Enable hover effects for clickable cards */
+    hoverEffect?: boolean;
+    /** Padding preset */
+    padding?: 'none' | 'sm' | 'md' | 'lg';
+    /** Card variant */
+    variant?: 'default' | 'elevated' | 'outline' | 'ghost';
+}
+
+/**
+ * Card Component
+ * 
+ * Container component for grouping related content.
+ * Supports click interactions and visual variants.
+ * 
+ * @example
+ * <Card padding="md">Content here</Card>
+ * <Card hoverEffect onClick={() => handleClick()}>Clickable card</Card>
+ */
+export const Card: React.FC<CardProps> = ({
+    children,
+    className = '',
+    onClick,
+    hoverEffect = false,
+    padding = 'md', // Default padding changed
+    variant = 'default',
+}) => {
+    // Variant styles
+    const variants: Record<string, string> = {
+        default: 'bg-card border-border shadow-sm',
+        elevated: 'bg-card border-border shadow-lg',
+        outline: 'bg-transparent border-border',
+        ghost: 'bg-muted/50 border-transparent',
+    };
+
+    // Padding styles
+    const paddings: Record<string, string> = {
+        none: 'p-0',
+        sm: 'p-4',
+        md: 'p-6',
+        lg: 'p-8',
+    };
+
+    const hoverStyles = hoverEffect
+        ? 'hover:shadow-md hover:border-primary cursor-pointer transition-all duration-300 group'
+        : '';
+
+    const interactiveStyles = onClick
+        ? 'cursor-pointer'
+        : '';
+
+    return (
+        <div
+            onClick={onClick}
+            className={`
+                rounded-xl border overflow-hidden
+                ${variants[variant]}
+                ${paddings[padding]}
+                ${hoverStyles}
+                ${interactiveStyles}
+                ${className}
+            `.replace(/\s+/g, ' ').trim()}
+        >
+            {children}
+        </div>
+    );
+};
+
+export default Card;

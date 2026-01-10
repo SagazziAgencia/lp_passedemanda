@@ -16,7 +16,7 @@ import {
     ShieldCheck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Card } from '@/components/shared/card';
 import PortfolioModal from '@/components/shared/portfolio-modal';
 import TalentCard from '@/components/shared/talent-card';
 import { MOCK_PROS, SKILL_CATEGORIES, SKILL_TO_CATEGORY } from '@/lib/constants';
@@ -315,7 +315,7 @@ export default function FindProfessionals() {
             </section>
 
             <section className="mt-16 mb-8">
-                <Card className="p-8 md:p-12 bg-gradient-to-br from-primary to-accent border-0 text-primary-foreground relative rounded-xl">
+                <Card className="p-8 md:p-12 bg-gradient-to-br from-primary to-accent border-0 text-primary-foreground relative rounded-xl" padding='none'>
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-2xl" />
 
