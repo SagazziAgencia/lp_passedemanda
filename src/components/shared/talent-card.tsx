@@ -43,39 +43,39 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, index }
                         <h3 className="font-headline font-bold text-foreground text-lg truncate group-hover:text-primary transition-colors">
                             {professional.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground font-medium truncate">
+                        <p className="text-sm text-muted-foreground font-medium uppercase truncate">
                             {professional.role}
                         </p>
                     </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-5">
                     {professional.skills.slice(0, 3).map((skill) => (
-                        <Badge key={skill} variant="outline" className="font-semibold text-xs py-1 px-2 border-gray-200 bg-gray-50 text-gray-600">
+                        <Badge key={skill} variant="secondary" className="font-semibold text-xs py-1 px-2">
                             {skill}
                         </Badge>
                     ))}
                 </div>
 
-                <div className="mb-5">
-                    <div className="flex justify-between items-center mb-1.5">
-                        <span className="text-xs text-muted-foreground font-bold uppercase tracking-wider">Satisfação</span>
-                        <span className="text-sm text-foreground font-bold">{satisfaction}%</span>
+                <div className="space-y-1 mb-5">
+                    <div className="flex items-center gap-2 text-xs">
+                        <span className="font-bold text-foreground">{satisfaction}%</span>
+                        <span className="text-muted-foreground font-medium">SATISFAÇÃO</span>
                     </div>
-                    <Progress value={satisfaction} className="h-2 bg-emerald-100 [&>div]:bg-emerald-400" />
+                    <Progress value={satisfaction} className="h-1.5 bg-emerald-100 [&>div]:bg-emerald-500" />
                 </div>
 
-                <div className="grid grid-cols-3 gap-2 text-center border-t border-b py-3 my-auto">
+                <div className="grid grid-cols-3 gap-2 text-left my-auto pb-4">
                     <div>
-                        <span className="text-xs text-muted-foreground font-bold uppercase">Resp.</span>
-                        <p className="text-sm font-bold text-foreground">{professional.averageResponseTime || '30m'}</p>
+                        <span className="text-xs text-muted-foreground font-bold uppercase">RESP.</span>
+                        <p className="text-sm font-bold text-foreground">{professional.averageResponseTime || '1h'}</p>
                     </div>
-                     <div className='border-l border-r'>
+                     <div>
                         <span className="text-xs text-muted-foreground font-bold uppercase">Prazo</span>
-                        <p className="text-sm font-bold text-foreground">{professional.averageDeliveryTime || '2d'}</p>
+                        <p className="text-sm font-bold text-foreground">{professional.averageDeliveryTime || '5 dias'}</p>
                     </div>
-                    <div>
-                        <span className="text-xs text-muted-foreground font-bold uppercase">Valor</span>
+                    <div className="text-right">
+                         <span className="text-xs text-muted-foreground font-bold uppercase invisible">Valor</span>
                          <p className="text-sm font-bold text-foreground">
                             R$ {professional.hourlyRate}<span className="text-xs text-muted-foreground font-normal">/h</span>
                         </p>
@@ -83,8 +83,8 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, index }
                 </div>
             </CardContent>
 
-            <div className="p-4 pt-0 mt-2">
-                <Button variant="outline" className="w-full h-10 rounded-lg font-bold text-primary border-primary/50 hover:bg-primary hover:text-primary-foreground transition-all">
+            <div className="p-4 pt-0 mt-auto">
+                 <Button variant="outline" className="w-full h-10 rounded-lg font-bold text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all">
                     Passar Demanda
                 </Button>
             </div>
