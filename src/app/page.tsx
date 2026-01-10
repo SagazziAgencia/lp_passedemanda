@@ -5,6 +5,12 @@ import {
     Search,
     Shuffle,
     ArrowRight,
+    UserPlus,
+    Compass,
+    Gift,
+    DollarSign,
+    BarChart,
+    ShieldCheck
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/shared/card';
@@ -13,6 +19,8 @@ import TalentCard from '@/components/shared/talent-card';
 import { MOCK_PROS, SKILL_CATEGORIES, SKILL_TO_CATEGORY } from '@/lib/constants';
 import type { Professional } from '@/types';
 import Hero from '@/components/shared/hero';
+import BenefitCard from '@/components/shared/benefit-card';
+import Header from '@/components/shared/header';
 
 /**
  * Shuffle array using Fisher-Yates algorithm
@@ -73,10 +81,72 @@ export default function FindProfessionals() {
     };
 
     return (
-        <div className="min-h-screen animate-fade-in">
+        <div className="min-h-screen animate-fade-in bg-background">
+            <Header />
             <Hero onlineTalentCount={shuffledPros.length} />
 
-            <div className="container mx-auto px-4 py-8">
+            <main className="container mx-auto px-4 py-8">
+
+                <section className="mb-16">
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl font-bold text-foreground">Como funciona?</h2>
+                        <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
+                            O PasseDemanda conecta quem precisa de um serviço a quem pode executá-lo,
+                            recompensando quem faz a ponte.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        <div className="flex flex-col gap-4">
+                            <h3 className="text-xl font-bold text-primary text-center md:text-left">
+                                Você <span className="font-extrabold">passa a demanda</span>
+                            </h3>
+                            <BenefitCard
+                                icon={Gift}
+                                title="Ganhe 25% por indicação"
+                                description="Monetize seu networking indicando demandas que não pode atender. Sem esforço, com retorno garantido."
+                                variant='primary'
+                            />
+                            <BenefitCard
+                                icon={Compass}
+                                title="Encontre o talento ideal"
+                                description="Acesse uma rede de profissionais validados pela comunidade para garantir a qualidade da entrega."
+                                variant='primary'
+                            />
+                            <BenefitCard
+                                icon={BarChart}
+                                title="Acompanhe seus ganhos"
+                                description="Um dashboard simples e transparente para visualizar o status das suas indicações e o comissionamento."
+                                variant='primary'
+                            />
+                        </div>
+
+                        <div className="flex flex-col gap-4">
+                            <h3 className="text-xl font-bold text-muted-foreground text-center md:text-left">
+                                Você <span className="font-extrabold">executa a demanda</span>
+                            </h3>
+                            <BenefitCard
+                                icon={DollarSign}
+                                title="Receba jobs qualificados"
+                                description="Diga adeus à prospecção. Receba projetos alinhados às suas habilidades, com escopo e budget definidos."
+                                variant='accent'
+
+                            />
+                            <BenefitCard
+                                icon={UserPlus}
+                                title="Custo zero de aquisição"
+                                description="Concentre-se no que faz de melhor. Deixe que a rede do PasseDemanda traga os clientes até você."
+                                variant='accent'
+                            />
+                            <BenefitCard
+                                icon={ShieldCheck}
+                                title="Pagamento garantido"
+                                description="Trabalhe com a segurança de uma plataforma que intermedia o pagamento e garante o seu recebimento."
+                                variant='accent'
+                            />
+d                        </div>
+                    </div>
+                </section>
 
                 <section className="text-center mb-12 py-12">
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -208,7 +278,7 @@ export default function FindProfessionals() {
                         onOpenChange={(isOpen) => !isOpen && setSelectedPro(null)}
                     />
                 )}
-            </div>
+            </main>
         </div>
     );
 };
