@@ -23,8 +23,8 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
             iconColor: 'text-primary',
         },
         accent: {
-            iconBg: 'bg-accent/10',
-            iconColor: 'text-accent',
+            iconBg: 'bg-muted/50',
+            iconColor: 'text-muted-foreground',
         },
     };
 
@@ -33,7 +33,7 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
     return (
         <Card
             variant="outline"
-            className="text-left p-6 flex items-start gap-5"
+            className="text-left p-6 flex items-start gap-5 bg-card"
         >
             <div
                 className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center ${selectedVariant.iconBg}`}

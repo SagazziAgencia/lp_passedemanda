@@ -87,8 +87,8 @@ export default function FindProfessionals() {
 
     return (
         <div className="min-h-screen animate-fade-in container mx-auto px-4 py-8">
-            <section className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground mb-4">
+            <section className="text-center mb-12 py-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                     Para quem é o PasseDemanda?
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -98,7 +98,7 @@ export default function FindProfessionals() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 max-w-5xl mx-auto">
                     <div className="flex flex-col gap-6">
-                        <h3 className="text-2xl font-headline font-semibold text-left">
+                        <h3 className="text-2xl font-semibold text-left text-foreground">
                             Para quem <span className="text-primary">passa a demanda</span>
                         </h3>
                          <BenefitCard
@@ -118,8 +118,8 @@ export default function FindProfessionals() {
                         />
                     </div>
                     <div className="flex flex-col gap-6">
-                         <h3 className="text-2xl font-headline font-semibold text-left">
-                           Para quem <span className="text-accent">executa a demanda</span>
+                         <h3 className="text-2xl font-semibold text-left text-foreground">
+                           Para quem <span className="text-muted-foreground">executa a demanda</span>
                         </h3>
                         <BenefitCard
                             icon={Target}
@@ -271,7 +271,7 @@ export default function FindProfessionals() {
                         ))}
                     </div>
                 ) : (
-                    <Card variant="outline" padding="lg" className="text-center border-dashed border-2 bg-muted/50">
+                    <Card padding="lg" variant="outline" className="text-center border-dashed border-2 bg-muted/50">
                         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-background flex items-center justify-center">
                             <Search className="w-7 h-7 text-muted-foreground" />
                         </div>
