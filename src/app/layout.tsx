@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'TalentVerse',
+  title: 'PasseDemanda',
   description: 'Find qualified professionals ready to bring your ideas to life.',
 };
 
