@@ -11,6 +11,9 @@ import {
     DollarSign,
     Target,
     Briefcase,
+    Gift,
+    Handshake,
+    ShieldCheck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -87,9 +90,106 @@ export default function FindProfessionals() {
 
     return (
         <div className="min-h-screen animate-fade-in container mx-auto px-4 py-8">
-            <section className="text-center mb-12 py-12">
+            <section className="relative overflow-hidden rounded-2xl mb-12">
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900">
+                    <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
+                    <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-[80px]" />
+                    <div className="absolute top-1/2 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[60px]" />
+                    <div
+                        className="absolute inset-0 opacity-[0.03]"
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+                            backgroundSize: '60px 60px',
+                        }}
+                    />
+                </div>
+
+                <div className="relative z-10 px-6 py-16 md:py-24">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
+                            <div className="flex items-center gap-1.5">
+                                <Award className="w-3.5 h-3.5 text-amber-400" />
+                                <span className="text-amber-200 text-xs font-bold uppercase tracking-wider">
+                                    Talentos Verificados
+                                </span>
+                            </div>
+                            <div className="w-px h-4 bg-white/20" />
+                            <div className="flex items-center gap-1">
+                                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                                <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                                    {onlineTalentCount} talentos online
+                                </span>
+                            </div>
+                        </div>
+
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold text-white mb-4 tracking-tight">
+                            Sua demanda vale dinheiro.
+                            <br />
+                            Indique e ganhe {' '}
+                            <span className="relative inline-block">
+                                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary/80 via-primary to-accent/80">
+                                    25%
+                                </span>
+                                <span className="absolute bottom-1 left-0 right-0 h-3 bg-primary/20 -skew-x-12 rounded" />
+                            </span>
+                        </h1>
+
+                        <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                            Conecte profissionais a oportunidades e seja recompensado por isso. Simples, rápido e lucrativo.
+                        </p>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12 text-left text-sm">
+                            <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5">
+                                <Gift className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                                <div>
+                                    <h3 className="font-bold text-white">Para quem indica</h3>
+                                    <p className="text-slate-400">Monetize seu networking e demandas que não consegue atender.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5">
+                                <Handshake className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                                <div>
+                                    <h3 className="font-bold text-white">Para quem executa</h3>
+                                    <p className="text-slate-400">Receba demandas qualificadas sem gastar com prospecção.</p>
+                                </div>
+                            </div>
+                             <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5">
+                                <ShieldCheck className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                                <div>
+                                    <h3 className="font-bold text-white">Para o cliente final</h3>
+                                    <p className="text-slate-400">Acesse talentos validados por indicações de confiança.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className="max-w-xl mx-auto">
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-accent via-primary to-accent rounded-2xl opacity-0 group-focus-within:opacity-40 blur-lg transition-opacity duration-500" />
+                                <div className="relative flex items-center bg-white rounded-xl shadow-2xl overflow-hidden">
+                                    <Search className="ml-5 text-muted-foreground w-5 h-5 flex-shrink-0" />
+                                    <input
+                                        type="text"
+                                        placeholder="Buscar por serviço, habilidade ou profissional..."
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                        className="flex-1 w-full px-4 py-4 bg-transparent border-none focus:ring-0 focus:outline-none text-foreground placeholder:text-muted-foreground font-medium"
+                                        aria-label="Buscar profissionais"
+                                    />
+                                    <Button className="m-2 rounded-lg bg-primary hover:bg-primary/90">
+                                        <Search className="w-4 h-4 mr-2" />
+                                        Buscar
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <section className="text-center mb-12 py-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                    Para quem é o PasseDemanda?
+                    Como funciona o PasseDemanda?
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                     Uma plataforma que conecta quem precisa de um serviço a quem pode executá-lo,
@@ -105,16 +205,19 @@ export default function FindProfessionals() {
                             icon={DollarSign}
                             title="Ganhe 25% indicando"
                             description="Passe uma demanda para um talento da plataforma e ganhe 25% do valor do serviço como comissão."
+                            variant="primary"
                         />
                          <BenefitCard
                             icon={Users}
                             title="Acesse Talentos Verificados"
                             description="Encontre rapidamente profissionais qualificados e com portfólio validado para suas demandas."
+                             variant="primary"
                         />
                          <BenefitCard
                             icon={Zap}
                             title="Agilidade e Foco"
                             description="Delegue tarefas com segurança e libere seu tempo para focar no que realmente importa para seu negócio."
+                             variant="primary"
                         />
                     </div>
                     <div className="flex flex-col gap-6">
@@ -132,96 +235,13 @@ export default function FindProfessionals() {
                             title="Construa seu Portfólio"
                             description="Cada trabalho realizado fortalece sua reputação e atrai novas oportunidades na plataforma."
                             variant="accent"
-                        />
+                         />
                         <BenefitCard
                             icon={ArrowRight}
                             title="Foque no seu Talento"
                             description="Nós cuidamos da prospecção e do pagamento. Você se concentra em entregar um trabalho incrível."
                             variant="accent"
                         />
-                    </div>
-                </div>
-            </section>
-
-            <section className="relative overflow-hidden rounded-2xl mb-8">
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900">
-                    <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
-                    <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-[80px]" />
-                    <div className="absolute top-1/2 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[60px]" />
-                    <div
-                        className="absolute inset-0 opacity-[0.03]"
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-                            backgroundSize: '60px 60px',
-                        }}
-                    />
-                </div>
-
-                <div className="relative z-10 px-6 py-10 md:py-16">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-5">
-                            <div className="flex items-center gap-1">
-                                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                                <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                                    {onlineTalentCount} talentos online
-                                </span>
-                            </div>
-                            <div className="w-px h-4 bg-white/20" />
-                            <div className="flex items-center gap-1.5">
-                                <Award className="w-3.5 h-3.5 text-amber-400" />
-                                <span className="text-amber-200 text-xs font-bold uppercase tracking-wider">
-                                    Verificados
-                                </span>
-                            </div>
-                        </div>
-
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold text-white mb-4 tracking-tight">
-                            Passe sua demanda para
-                            <br className="md:hidden" />
-                            <span className="relative inline-block mx-2">
-                                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary/80 via-primary to-accent/80">
-                                    os melhores talentos
-                                </span>
-                                <span className="absolute bottom-1 left-0 right-0 h-3 bg-primary/20 -skew-x-12 rounded" />
-                            </span>
-                        </h1>
-
-                        <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-xl mx-auto leading-relaxed">
-                            Profissionais qualificados, prontos para transformar suas ideias em realidade.
-                        </p>
-
-                        <div className="max-w-xl mx-auto">
-                            <div className="relative group">
-                                <div className="absolute -inset-1 bg-gradient-to-r from-accent via-primary to-accent rounded-2xl opacity-0 group-focus-within:opacity-40 blur-lg transition-opacity duration-500" />
-                                <div className="relative flex items-center bg-white rounded-xl shadow-2xl overflow-hidden">
-                                    <Search className="ml-5 text-muted-foreground w-5 h-5 flex-shrink-0" />
-                                    <input
-                                        type="text"
-                                        placeholder="Busque por nome, função ou habilidade..."
-                                        value={searchTerm}
-                                        onChange={(e) => setSearchTerm(e.target.value)}
-                                        className="flex-1 w-full px-4 py-4 bg-transparent border-none focus:ring-0 focus:outline-none text-foreground placeholder:text-muted-foreground font-medium"
-                                        aria-label="Buscar profissionais"
-                                    />
-                                    <Button className="m-2 rounded-lg bg-primary hover:bg-primary/90">
-                                        <Search className="w-4 h-4 mr-2" />
-                                        Buscar
-                                    </Button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center justify-center gap-8 mt-10 text-sm">
-                            <div className="flex items-center gap-2 text-slate-400">
-                                <Users />
-                                <span><strong className="text-white">{onlineTalentCount}+</strong> profissionais</span>
-                            </div>
-                            <div className="hidden sm:block w-px h-4 bg-slate-600" />
-                            <div className="hidden sm:flex items-center gap-2 text-slate-400">
-                                <Zap />
-                                <span><strong className="text-white">24h</strong> resposta rápida</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
