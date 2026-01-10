@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Shuffle, Search } from 'lucide-react';
 import { SKILL_CATEGORIES } from '@/lib/constants';
 import TalentCard from '@/components/shared/talent-card';
-import { Card } from '@/components/shared/card';
 import type { Professional } from '@/types';
+import { Card as ShadCard } from '@/components/ui/card';
 
 interface TalentPoolProps {
     filteredPros: Professional[];
@@ -34,7 +34,7 @@ const TalentPool: React.FC<TalentPoolProps> = ({
                                 key={cat.id}
                                 variant={selectedCategory === cat.id ? 'default' : 'outline'}
                                 onClick={() => onCategoryChange(cat.id)}
-                                className={`rounded-xl px-5 py-2.5 text-sm transition-all duration-200 ${selectedCategory === cat.id ? 'bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20' : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'}`}
+                                className={`rounded-xl px-5 py-2.5 text-sm transition-all duration-200 ${selectedCategory === cat.id ? 'bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20' : 'bg-card text-foreground border-border hover:bg-accent'}`}
                             >
                                 {cat.label}
                             </Button>
@@ -45,14 +45,14 @@ const TalentPool: React.FC<TalentPoolProps> = ({
                         <Button
                             variant="outline"
                             onClick={onReshuffle}
-                            className="rounded-xl px-4 py-2.5 text-sm bg-slate-800 border-slate-700 hover:bg-slate-700"
+                            className="rounded-xl px-4 py-2.5 text-sm bg-card border-border hover:bg-accent"
                             title="Reordenar aleatoriamente"
                         >
                             <Shuffle className="w-4 h-4" />
                             <span className="hidden sm:inline ml-2">Reordenar</span>
                         </Button>
                         <span className="text-sm text-muted-foreground">
-                            <strong className="text-white">{filteredPros.length}</strong> resultados
+                            <strong className="text-foreground">{filteredPros.length}</strong> resultados
                         </span>
                     </div>
                 </div>
@@ -70,11 +70,11 @@ const TalentPool: React.FC<TalentPoolProps> = ({
                     ))}
                 </div>
             ) : (
-                <Card padding="lg" variant="outline" className="text-center border-dashed border-2 bg-slate-800/50 border-slate-700">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-900 flex items-center justify-center">
+                <ShadCard className="text-center border-dashed border-2 bg-card/50 border-border p-8 md:p-12">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-background flex items-center justify-center">
                         <Search className="w-7 h-7 text-muted-foreground" />
                     </div>
-                    <h3 className="text-xl font-headline font-bold text-white mb-2">
+                    <h3 className="text-xl font-headline font-bold text-foreground mb-2">
                         Nenhum talento encontrado
                     </h3>
                     <p className="text-muted-foreground mb-6 max-w-md mx-auto">
@@ -82,12 +82,12 @@ const TalentPool: React.FC<TalentPoolProps> = ({
                     </p>
                     <Button
                         variant="outline"
-                        className="border-slate-700 hover:bg-slate-700"
+                        className="border-border hover:bg-accent"
                         onClick={onClearFilters}
                     >
                         Limpar filtros
                     </Button>
-                </Card>
+                </ShadCard>
             )}
         </section>
     );

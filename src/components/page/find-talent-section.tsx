@@ -11,16 +11,16 @@ interface FindTalentSectionProps {
 const FindTalentSection: React.FC<FindTalentSectionProps> = ({ searchTerm, onSearchTermChange }) => {
     return (
         <section className="text-center mb-12 py-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
                 Encontre o talento ideal ou comece a ganhar
             </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 Navegue por profissionais validados pela comunidade ou busque por habilidades específicas para sua demanda.
             </p>
             <div className="mt-8 max-w-xl mx-auto">
                 <div className="relative group">
                     <div className="absolute -inset-1 bg-gradient-to-r from-accent via-primary to-accent rounded-2xl opacity-0 group-focus-within:opacity-40 blur-lg transition-opacity duration-500" />
-                    <div className="relative flex items-center bg-slate-800 rounded-xl shadow-lg overflow-hidden">
+                    <div className="relative flex items-center bg-card rounded-xl shadow-lg overflow-hidden border">
                         <Search className="ml-5 text-muted-foreground w-5 h-5 flex-shrink-0" />
                         <input
                             type="text"

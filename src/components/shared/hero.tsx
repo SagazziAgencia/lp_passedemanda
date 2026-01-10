@@ -12,7 +12,7 @@ interface HeroProps {
 
 export default function Hero({ onlineTalentCount }: HeroProps) {
     return (
-        <section className="relative overflow-hidden mb-12">
+        <section className="relative bg-slate-900 overflow-hidden mb-12">
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900/0 via-gray-900/0 to-slate-900/0">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
                 <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-[80px]" />
