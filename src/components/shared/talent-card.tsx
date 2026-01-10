@@ -3,7 +3,7 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import type { Professional } from '@/types';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
@@ -23,16 +23,18 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, index }
 
     return (
         <Card
-            className="group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col h-full cursor-pointer animate-fade-in"
-            style={{ animationDelay: `${index * 50}ms` }}
             onClick={onSelect}
+            hoverEffect
+            className="flex flex-col h-full animate-fade-in"
+            style={{ animationDelay: `${index * 50}ms` }}
+            padding="none"
         >
-            <CardContent className="p-5 flex-1 flex flex-col text-sm">
+            <div className="p-5 flex-1 flex flex-col text-sm">
                 <div className="flex items-start gap-4 mb-4">
                     <div className="relative flex-shrink-0">
-                        <Avatar className="w-16 h-16 rounded-full">
+                        <Avatar className="w-16 h-16 rounded-xl">
                             <AvatarImage src={professional.avatar} alt={professional.name} />
-                            <AvatarFallback className="rounded-full bg-muted text-xl">{initials}</AvatarFallback>
+                            <AvatarFallback className="rounded-xl bg-muted text-xl">{initials}</AvatarFallback>
                         </Avatar>
                         <div className="absolute -bottom-1 -right-1 bg-background rounded-full p-0.5">
                            <CheckCircle className="w-5 h-5 text-emerald-500" strokeWidth={2} />
@@ -58,13 +60,11 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, index }
                 </div>
                 
                 <div className="mt-auto space-y-4">
-                    <div className="space-y-1">
-                      <div className="flex items-center justify-between text-xs font-medium text-muted-foreground">
-                        <span>Satisfação</span>
+                     <div className="flex items-center gap-3 text-xs font-medium text-muted-foreground">
+                        <Progress value={satisfaction} className="h-1.5 w-full" />
                         <span className="font-bold text-foreground">{satisfaction}%</span>
+                        <span>Satisfação</span>
                       </div>
-                      <Progress value={satisfaction} className="h-1.5" />
-                    </div>
 
 
                     <div className="grid grid-cols-3 gap-2 text-left my-auto pt-2">
@@ -84,7 +84,7 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, index }
                         </div>
                     </div>
                 </div>
-            </CardContent>
+            </div>
 
             <div className="p-4 pt-0">
                  <Button variant="outline" className="w-full h-10 rounded-lg font-bold text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all">
