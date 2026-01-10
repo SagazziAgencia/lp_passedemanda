@@ -6,7 +6,6 @@ import { MOCK_PROS } from '@/lib/constants';
 import type { Professional } from '@/types';
 import Hero from '@/components/shared/hero';
 import Header from '@/components/shared/header';
-import HowItWorksSection from '@/components/page/how-it-works-section';
 import FindTalentSection from '@/components/page/find-talent-section';
 import JoinCommunitySection from '@/components/page/join-community-section';
 import TalentPool from '@/components/page/talent-pool';
@@ -63,7 +62,6 @@ export default function FindProfessionals() {
             <Hero onlineTalentCount={shuffledPros.length} />
 
             <main className="container mx-auto px-4 py-8">
-                <HowItWorksSection />
                 <FindTalentSection
                     searchTerm={searchTerm}
                     onSearchTermChange={setSearchTerm}
