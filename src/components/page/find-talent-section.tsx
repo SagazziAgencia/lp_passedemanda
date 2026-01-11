@@ -11,7 +11,7 @@ interface FindTalentSectionProps {
 
 const FindTalentSection: React.FC<FindTalentSectionProps> = ({ searchTerm, onSearchTermChange, onlineTalentCount }) => {
     return (
-        <section className="text-center mb-12 py-12 md:py-16 bg-slate-900 text-white relative overflow-hidden">
+        <section className="text-center py-12 md:py-16 bg-slate-900 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900/0 via-gray-900/0 to-slate-900/0">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[80px]" />
                 <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-[70px]" />

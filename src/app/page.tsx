@@ -11,6 +11,7 @@ import JoinCommunitySection from '@/components/page/join-community-section';
 import TalentPool from '@/components/page/talent-pool';
 import { getProfessionalCategory } from '@/lib/utils';
 import RegistrationModal from '@/components/shared/registration-modal';
+import BenefitsCarousel from '@/components/page/benefits-carousel';
 
 /**
  * Shuffle array using Fisher-Yates algorithm
@@ -61,8 +62,12 @@ export default function FindProfessionals() {
     return (
         <div className="min-h-screen animate-fade-in bg-background">
             <Header onRegisterClick={() => setIsRegistrationModalOpen(true)} />
-            <Hero onlineTalentCount={shuffledPros.length} />
+            <div className="bg-slate-900">
+                <Hero onlineTalentCount={shuffledPros.length} />
+            </div>
 
+            <BenefitsCarousel />
+            
             <FindTalentSection
                 searchTerm={searchTerm}
                 onSearchTermChange={setSearchTerm}
