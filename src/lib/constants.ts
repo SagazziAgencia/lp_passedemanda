@@ -197,3 +197,5 @@ export const MOCK_PROS: Professional[] = [
         portfolio: [],
     },
 ];
+
+export const TOTAL_ONLINE_PROFESSIONALS = 1253;

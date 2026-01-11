@@ -56,11 +56,11 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onOpenCha
 
     const handleJoinCommunity = () => {
         // Substitua 'placeholder' pelo link real do seu grupo de WhatsApp
-        window.open('https://chat.whatsapp.com/placeholder', '_blank');
+        window.open('https://chat.whatsapp.com/HJbAJszblEh9NTSdUIrI9j', '_blank');
         onOpenChange(false);
         resetForm();
     };
-    
+
     const resetForm = () => {
         setCurrentStep(0);
         setAnswers([]);
@@ -69,7 +69,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onOpenCha
     const handleModalOpenChange = (open: boolean) => {
         onOpenChange(open);
         if (!open) {
-          setTimeout(resetForm, 300);
+            setTimeout(resetForm, 300);
         }
     };
 

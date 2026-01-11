@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import Link from 'next/link';
+import { ROUTES } from '@/lib/routes';
 import { Button } from '@/components/ui/button';
 import Logo from './logo';
 
@@ -13,10 +14,12 @@ const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
         <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-14 items-center">
                 <div className="mr-4 flex items-center">
-                   <Logo />
+                    <Link href={ROUTES.HOME} className="flex items-center">
+                        <Logo />
+                    </Link>
                 </div>
                 <div className="flex flex-1 items-center justify-end gap-4">
-                    <Button variant="outline" className="w-28 border-primary text-primary hover:bg-primary hover:text-primary-foreground">Login</Button>
+                    <Button onClick={onRegisterClick} variant="outline" className="w-28 border-primary text-primary hover:bg-primary hover:text-primary-foreground">Login</Button>
                     <Button onClick={onRegisterClick} className="w-28">Cadastrar</Button>
                 </div>
             </div>

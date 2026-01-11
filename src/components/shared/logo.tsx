@@ -21,6 +21,7 @@ export interface LogoProps {
  * Behavior:
  * - Default: Left = Outline, Right = Filled.
  * - Hover: They SWAP positions (Left moves Right, Right moves Left).
+ *   This uses the same logic as the previous 'click' swap, but triggered on hover.
  */
 export const Logo: React.FC<LogoProps> = ({
     showText = true,
@@ -40,10 +41,10 @@ export const Logo: React.FC<LogoProps> = ({
     };
 
     // Color configurations
-    const textColor = variant === 'light' ? 'text-white' : 'text-slate-900';
-    const primaryColor = 'text-primary';
-    const accentColor = 'text-primary';
-    const innerStrokeColor = 'stroke-background';
+    const textColor = variant === 'light' ? 'text-white' : 'text-slate-900 dark:text-white';
+    const primaryColor = variant === 'light' ? 'text-white' : 'text-primary';
+    const accentColor = variant === 'light' ? 'text-primary-foreground' : 'text-primary';
+    const innerStrokeColor = variant === 'light' ? 'stroke-slate-900' : 'stroke-background';
 
     return (
         <div
@@ -61,6 +62,7 @@ export const Logo: React.FC<LogoProps> = ({
                     xmlns="http://www.w3.org/2000/svg"
                     className="overflow-visible h-full"
                 >
+                    {/* Left Chevron (Outline) */}
                     <g className={`transition-transform duration-500 ease-in-out ${isHovered ? 'translate-x-[80px]' : 'translate-x-0'}`}>
                         <path
                             d="M20.7773 20.7778L100.33 94.3665C100.598 94.6143 100.591 95.0401 100.314 95.2782L20.7773 163.778"
@@ -78,6 +80,7 @@ export const Logo: React.FC<LogoProps> = ({
                         />
                     </g>
 
+                    {/* Right Chevron (Filled) */}
                     <g className={`transition-transform duration-500 ease-in-out ${isHovered ? '-translate-x-[80px]' : 'translate-x-0'}`}>
                         <g transform="translate(80 0)">
                             <path

@@ -11,7 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardTitle, CardDescription } from '@/components/ui/card';
-import { Mail, Briefcase, Star, Clock, Link as LinkIcon } from 'lucide-react';
+import { Briefcase, Star, Clock, Link as LinkIcon } from 'lucide-react';
 
 interface PortfolioModalProps {
     professional: Professional;
@@ -36,7 +36,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ professional, open, onO
                         <CardDescription className="text-primary font-semibold mb-6">{professional.role}</CardDescription>
 
                         <div className="flex flex-col gap-3 text-left w-full text-sm text-muted-foreground">
-                             <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3">
                                 <Star className="w-4 h-4 text-amber-500 flex-shrink-0" />
                                 <span>{professional.rating.toFixed(1)} Rating ({satisfaction}% Satisfação)</span>
                             </div>
@@ -47,12 +47,6 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ professional, open, onO
                             <div className="flex items-center gap-3">
                                 <Clock className="w-4 h-4 text-primary flex-shrink-0" />
                                 <span>{professional.averageResponseTime} de resposta</span>
-                            </div>
-                             <div className="flex items-center gap-3">
-                                <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                                <a href={`mailto:${professional.contact}`} className="text-primary hover:underline break-all">
-                                    {professional.contact}
-                                </a>
                             </div>
                         </div>
 
@@ -73,9 +67,9 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({ professional, open, onO
                                     <Card className="bg-card border-border hover:border-primary transition-colors group">
                                         <div className="p-0">
                                             <div className="aspect-video relative">
-                                                <Image src={item.image} alt={item.title} fill className="object-cover" data-ai-hint="website design"/>
+                                                <Image src={item.image} alt={item.title} fill className="object-cover" data-ai-hint="website design" />
                                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                                                     <LinkIcon className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                    <LinkIcon className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                                                 </div>
                                             </div>
                                             <div className="p-4">
