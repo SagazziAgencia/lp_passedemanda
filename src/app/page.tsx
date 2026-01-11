@@ -63,12 +63,13 @@ export default function FindProfessionals() {
             <Header onRegisterClick={() => setIsRegistrationModalOpen(true)} />
             <Hero onlineTalentCount={shuffledPros.length} />
 
+            <FindTalentSection
+                searchTerm={searchTerm}
+                onSearchTermChange={setSearchTerm}
+                onlineTalentCount={shuffledPros.length}
+            />
+
             <main className="container mx-auto px-4 py-8 text-foreground">
-                <FindTalentSection
-                    searchTerm={searchTerm}
-                    onSearchTermChange={setSearchTerm}
-                    onlineTalentCount={shuffledPros.length}
-                />
                 <TalentPool
                     filteredPros={filteredPros}
                     selectedCategory={selectedCategory}
