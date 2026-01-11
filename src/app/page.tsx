@@ -12,6 +12,7 @@ import TalentPool from '@/components/page/talent-pool';
 import { getProfessionalCategory } from '@/lib/utils';
 import RegistrationModal from '@/components/shared/registration-modal';
 import BenefitsCarousel from '@/components/page/benefits-carousel';
+import { Button } from '@/components/ui/button';
 
 /**
  * Shuffle array using Fisher-Yates algorithm
@@ -64,6 +65,14 @@ export default function FindProfessionals() {
             <Header onRegisterClick={() => setIsRegistrationModalOpen(true)} />
             <div className="bg-slate-900">
                 <Hero onlineTalentCount={shuffledPros.length} />
+                 <div className="relative z-10 text-center -mt-8 pb-12">
+                    <Button size="lg" onClick={() => setIsRegistrationModalOpen(true)} className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-10 py-6 rounded-xl shadow-lg shadow-primary/30 transform hover:scale-105 transition-transform">
+                        Quero monetizar minhas indicações
+                    </Button>
+                    <p className="text-slate-400 mt-3 text-sm">
+                        Cadastro gratuito para indicadores e executores
+                    </p>
+                </div>
             </div>
 
             <BenefitsCarousel />

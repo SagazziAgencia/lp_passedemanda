@@ -30,46 +30,38 @@ export default function Hero({ onlineTalentCount }: HeroProps) {
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
                         <ShieldCheck className="w-4 h-4 text-emerald-400" />
                         <span className="text-emerald-300 text-sm font-medium">
-                            Pagamento seguro e transações protegidas
+                            O 1º Marketplace de indicação remunerada com split automático.
                         </span>
                     </div>
 
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold text-white mb-4 tracking-tight">
-                        Sua demanda vale dinheiro.
-                        <br />
-                        Indique e ganhe{' '}
-                        <span className="relative inline-block">
-                            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary/80 via-primary to-accent/80">
-                                25%
-                            </span>
-                            <span className="absolute bottom-1 left-0 right-0 h-3 bg-primary/20 -skew-x-12 rounded" />
-                        </span>
+                       Pare de perder dinheiro recusando clientes.
                     </h1>
 
-                    <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                        Conecte profissionais a oportunidades e seja recompensado por isso. Simples, rápido e lucrativo.
+                    <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+                        Repasse os projetos que você não pode atender para profissionais qualificados e garanta <span className="font-bold text-chart-4">25% de comissão imediata</span> sobre o valor fechado. Sem entregar o serviço, apenas pela conexão.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12 text-left text-sm">
                         <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5">
                             <Gift className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                             <div>
-                                <h3 className="font-bold text-white">Para quem indica</h3>
-                                <p className="text-slate-400">Monetize seu networking e demandas que não consegue atender.</p>
+                                <h3 className="font-bold text-white">Lucre com o "Não"</h3>
+                                <p className="text-slate-400">Não consegue atender? Indique via plataforma, mantenha o relacionamento e receba 25% do valor sem colocar a mão na massa.</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5">
                             <Handshake className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                             <div>
-                                <h3 className="font-bold text-white">Para quem executa</h3>
-                                <p className="text-slate-400">Receba demandas qualificadas sem gastar com prospecção.</p>
+                                <h3 className="font-bold text-white">Clientes Prontos (Lead Quente)</h3>
+                                <p className="text-slate-400">Receba demandas de quem já tem orçamento e urgência. Você fica com 70% do valor e foca apenas na entrega.</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-3 p-4 rounded-lg bg-white/5">
                             <ShieldCheck className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                             <div>
-                                <h3 className="font-bold text-white">Para o cliente final</h3>
-                                <p className="text-slate-400">Acesse talentos validados por indicações de confiança.</p>
+                                <h3 className="font-bold text-white">Segurança e Confiança</h3>
+                                <p className="text-slate-400">Seu pagamento fica protegido no Cofre da Plataforma e só é liberado após a entrega aprovada.</p>
                             </div>
                         </div>
                     </div>
