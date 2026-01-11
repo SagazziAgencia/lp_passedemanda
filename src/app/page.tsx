@@ -67,6 +67,7 @@ export default function FindProfessionals() {
                 <FindTalentSection
                     searchTerm={searchTerm}
                     onSearchTermChange={setSearchTerm}
+                    onlineTalentCount={shuffledPros.length}
                 />
                 <TalentPool
                     filteredPros={filteredPros}
