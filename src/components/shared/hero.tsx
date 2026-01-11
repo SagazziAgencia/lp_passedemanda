@@ -28,20 +28,11 @@ export default function Hero({ onlineTalentCount }: HeroProps) {
 
             <div className="relative z-10 px-6 py-16 md:py-24">
                 <div className="max-w-4xl mx-auto text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
-                        <div className="flex items-center gap-1.5">
-                            <Award className="w-3.5 h-3.5 text-amber-400" />
-                            <span className="text-amber-200 text-xs font-bold uppercase tracking-wider">
-                                Talentos Verificados
-                            </span>
-                        </div>
-                        <div className="w-px h-4 bg-white/20" />
-                        <div className="flex items-center gap-1">
-                            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                            <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
-                                {onlineTalentCount} talentos online
-                            </span>
-                        </div>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6">
+                        <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                        <span className="text-emerald-300 text-sm font-medium">
+                            Pagamento seguro e transações protegidas
+                        </span>
                     </div>
 
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold text-white mb-4 tracking-tight">
