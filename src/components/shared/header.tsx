@@ -15,9 +15,9 @@ const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
                 <div className="mr-4 flex items-center">
                    <Logo />
                 </div>
-                <div className="flex flex-1 items-center justify-end space-x-4">
-                    <Button variant="ghost" className="text-foreground hover:bg-accent hover:text-accent-foreground">Login</Button>
-                    <Button onClick={onRegisterClick}>Cadastrar</Button>
+                <div className="flex flex-1 items-center justify-end gap-4">
+                    <Button variant="ghost" className="w-28 text-foreground hover:bg-accent hover:text-accent-foreground">Login</Button>
+                    <Button onClick={onRegisterClick} className="w-28">Cadastrar</Button>
                 </div>
             </div>
         </header>
