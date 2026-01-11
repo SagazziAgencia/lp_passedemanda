@@ -4,7 +4,11 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import Logo from './logo';
 
-const Header = () => {
+interface HeaderProps {
+    onRegisterClick: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
     return (
         <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-14 items-center">
@@ -13,7 +17,7 @@ const Header = () => {
                 </div>
                 <div className="flex flex-1 items-center justify-end space-x-2">
                     <Button variant="ghost" className="text-foreground hover:bg-accent hover:text-accent-foreground">Login</Button>
-                    <Button>Cadastrar</Button>
+                    <Button onClick={onRegisterClick}>Cadastrar</Button>
                 </div>
             </div>
         </header>

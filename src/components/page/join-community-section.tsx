@@ -3,7 +3,11 @@ import { Card } from '@/components/shared/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
-const JoinCommunitySection = () => {
+interface JoinCommunitySectionProps {
+    onRegisterClick: () => void;
+}
+
+const JoinCommunitySection: React.FC<JoinCommunitySectionProps> = ({ onRegisterClick }) => {
     return (
         <section className="mt-16 mb-8">
             <Card className="p-8 md:p-12 bg-gradient-to-br from-primary to-accent border-0 text-primary-foreground relative rounded-xl" padding='none'>
@@ -22,6 +26,7 @@ const JoinCommunitySection = () => {
                     <Button
                         size="lg"
                         className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-4 text-base font-bold shadow-xl flex-shrink-0"
+                        onClick={onRegisterClick}
                     >
                         Cadastrar como Talento
                         <ArrowRight />

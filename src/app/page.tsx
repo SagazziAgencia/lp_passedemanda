@@ -10,6 +10,7 @@ import FindTalentSection from '@/components/page/find-talent-section';
 import JoinCommunitySection from '@/components/page/join-community-section';
 import TalentPool from '@/components/page/talent-pool';
 import { getProfessionalCategory } from '@/lib/utils';
+import RegistrationModal from '@/components/shared/registration-modal';
 
 /**
  * Shuffle array using Fisher-Yates algorithm
@@ -29,6 +30,7 @@ export default function FindProfessionals() {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [selectedPro, setSelectedPro] = useState<Professional | null>(null);
     const [shuffledPros, setShuffledPros] = useState<Professional[]>([]);
+    const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
 
     useEffect(() => {
         setShuffledPros(shuffleArray(MOCK_PROS));
@@ -58,7 +60,7 @@ export default function FindProfessionals() {
 
     return (
         <div className="min-h-screen animate-fade-in bg-background">
-            <Header />
+            <Header onRegisterClick={() => setIsRegistrationModalOpen(true)} />
             <Hero onlineTalentCount={shuffledPros.length} />
 
             <main className="container mx-auto px-4 py-8 text-foreground">
@@ -77,7 +79,7 @@ export default function FindProfessionals() {
                         setSelectedCategory('all');
                     }}
                 />
-                <JoinCommunitySection />
+                <JoinCommunitySection onRegisterClick={() => setIsRegistrationModalOpen(true)} />
 
                 {selectedPro && (
                     <PortfolioModal
@@ -86,6 +88,11 @@ export default function FindProfessionals() {
                         onOpenChange={(isOpen) => !isOpen && setSelectedPro(null)}
                     />
                 )}
+
+                <RegistrationModal
+                    isOpen={isRegistrationModalOpen}
+                    onOpenChange={setIsRegistrationModalOpen}
+                />
             </main>
         </div>
     );
