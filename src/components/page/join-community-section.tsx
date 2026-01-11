@@ -25,7 +25,7 @@ const JoinCommunitySection: React.FC<JoinCommunitySectionProps> = ({ onRegisterC
                     </div>
                     <Button
                         size="lg"
-                        className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 active:bg-primary active:text-primary-foreground active:scale-95 transform transition-all duration-300 px-8 py-4 text-base font-bold shadow-xl flex-shrink-0"
+                        className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 hover:scale-105 active:bg-primary active:text-primary-foreground active:scale-95 transform transition-all duration-300 px-8 py-4 text-base font-bold shadow-xl flex-shrink-0"
                         onClick={onRegisterClick}
                     >
                         Cadastrar como Talento
