@@ -55,7 +55,7 @@ export default function Icon() {
                     {/* Chevron 1: Outline (Uses Mask) */}
                     <path
                         d="M20.7773 20.7778L100.33 94.3665C100.598 94.6143 100.591 95.0401 100.314 95.2782L20.7773 163.778"
-                        stroke="hsl(245, 80%, 60%)" // Primary Color
+                        stroke="#07258B" // Brand Color
                         strokeWidth="41.5556"
                         strokeLinecap="round"
                         mask="url(#cutout-mask)"
@@ -65,7 +65,7 @@ export default function Icon() {
                     <g transform="translate(80 0)">
                         <path
                             d="M20.7773 20.7778L100.33 94.3665C100.598 94.6143 100.591 95.0401 100.314 95.2782L20.7773 163.778"
-                            stroke="hsl(245, 80%, 60%)" // Primary Color
+                            stroke="#07258B" // Brand Color
                             strokeWidth="41.5556"
                             strokeLinecap="round"
                         />
