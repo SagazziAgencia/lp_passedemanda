@@ -9,9 +9,9 @@ export default function Footer() {
     return (
         <footer className="bg-slate-950 border-t border-white/10 pt-16 pb-8">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16 text-center md:text-left">
                     {/* Brand Column */}
-                    <div>
+                    <div className="flex flex-col items-center md:items-start">
                         <Link href={ROUTES.HOME} className="flex items-center gap-2 mb-6 hover:opacity-80 transition-opacity">
                             <Logo variant="light" size="md" />
                         </Link>
@@ -69,7 +69,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500 text-center md:text-left">
                     <p>© {new Date().getFullYear()} PasseDemanda. Todos os direitos reservados.</p>
                     <div className="flex gap-8">
                         <a href="#" className="hover:text-slate-300 transition-colors">Privacidade</a>

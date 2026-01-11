@@ -33,32 +33,32 @@ export default function Hero({ onlineTalentCount, onRegisterClick }: HeroProps) 
                 </div>
 
                 {/* Main Headline - High contrast, legible, confident */}
-                <h1 className="max-w-4xl text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.15]">
-                    Não deixe dinheiro na mesa.<br />
-                    <span className="text-slate-400">Monetize os clientes que você recusa.</span>
+                <h1 className="max-w-4xl text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1] md:leading-[1.15]">
+                    Não deixe dinheiro na mesa.<br className="hidden md:block" />
+                    <span className="text-slate-400 block md:inline mt-2 md:mt-0">Monetize os clientes que você recusa.</span>
                 </h1>
 
                 {/* Subheadline - Direct and specific */}
-                <p className="max-w-2xl text-lg text-slate-400 mb-10 leading-relaxed font-normal">
+                <p className="max-w-2xl text-base md:text-lg text-slate-400 mb-8 md:mb-10 leading-relaxed font-normal px-4">
                     Transforme leads perdidos em <strong className="text-white font-medium">receita recorrente</strong> com segurança.
                     Conectamos sua demanda a profissionais verificados e garantimos sua comissão via contrato inteligente.
                 </p>
 
                 {/* Primary CTA - Solid, actionable */}
-                <div className="flex flex-col items-center gap-6 mb-20 w-full">
+                <div className="flex flex-col items-center gap-6 mb-16 md:mb-20 w-full px-4">
                     <Button
                         size="lg"
                         onClick={onRegisterClick}
-                        className="h-16 px-12 text-lg font-bold bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto min-w-[300px]"
+                        className="h-14 md:h-16 px-8 md:px-12 text-base md:text-lg font-bold bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto min-w-[280px]"
                     >
                         Começar agora
                     </Button>
-                    <div className="flex items-center justify-center gap-4 text-sm text-slate-400">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm text-slate-400">
                         <span className="flex items-center gap-1.5">
                             <ShieldCheck className="w-5 h-5 text-emerald-500" />
                             Dados protegidos
                         </span>
-                        <span className="w-1 h-1 rounded-full bg-slate-700" />
+                        <span className="hidden sm:block w-1 h-1 rounded-full bg-slate-700" />
                         <span>Sem custo de adesão</span>
                     </div>
                 </div>
