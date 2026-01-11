@@ -12,7 +12,7 @@ interface TalentPoolProps {
     selectedCategory: string;
     onCategoryChange: (category: string) => void;
     onReshuffle: () => void;
-    onSelectPro: (pro: Professional) => void;
+    onCardClick: (pro: Professional) => void;
     onClearFilters: () => void;
 }
 
@@ -21,7 +21,7 @@ const TalentPool: React.FC<TalentPoolProps> = ({
     selectedCategory,
     onCategoryChange,
     onReshuffle,
-    onSelectPro,
+    onCardClick,
     onClearFilters
 }) => {
     return (
@@ -64,7 +64,7 @@ const TalentPool: React.FC<TalentPoolProps> = ({
                         <TalentCard
                             key={pro.id}
                             professional={pro}
-                            onSelect={() => onSelectPro(pro)}
+                            onSelect={() => onCardClick(pro)}
                             index={index}
                         />
                     ))}

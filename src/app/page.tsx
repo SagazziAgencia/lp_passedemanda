@@ -80,7 +80,7 @@ export default function FindProfessionals() {
                     selectedCategory={selectedCategory}
                     onCategoryChange={setSelectedCategory}
                     onReshuffle={handleReshuffle}
-                    onSelectPro={setSelectedPro}
+                    onCardClick={() => setIsRegistrationModalOpen(true)}
                     onClearFilters={() => {
                         setSearchTerm('');
                         setSelectedCategory('all');
