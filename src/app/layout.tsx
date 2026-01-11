@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: 'Find qualified professionals ready to bring your ideas to life.',
 };
 
+import { Analytics } from "@vercel/analytics/next";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,8 +22,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background">
-          {children}
-          <Toaster />
+        {children}
+        <Toaster />
+        <Analytics />
       </body>
     </html>
   );
