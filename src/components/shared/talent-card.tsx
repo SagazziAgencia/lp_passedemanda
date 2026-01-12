@@ -1,13 +1,13 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
 import type { Professional } from '@/types';
-import { Card } from '@/components/shared/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Progress } from '@/components/ui/progress';
 
 interface TalentCardProps {
     professional: Professional;
@@ -23,81 +23,97 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, onRegis
     const initials = professional.name.split(' ').map(n => n[0]).join('');
 
     return (
-        <Card
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05, ease: "easeOut" }}
+            whileHover={{ y: -4, transition: { type: "spring", stiffness: 350, damping: 25 } }}
+            className="group relative bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full cursor-pointer"
             onClick={onSelect}
-            hoverEffect
-            variant="default"
-            className="flex flex-col h-full animate-fade-in"
-            style={{ animationDelay: `${index * 50}ms` }}
-            padding="none"
         >
-            <div className="p-5 flex-1 flex flex-col text-sm">
-                <div className="flex items-start gap-4 mb-4">
+            {/* Top accent */}
+            <div className="h-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+
+            <div className="p-4 flex-1 flex flex-col text-sm">
+                {/* Header: Identity */}
+                <div className="flex items-center gap-3 mb-3">
                     <div className="relative flex-shrink-0">
-                        <Avatar className="w-16 h-16 rounded-xl">
-                            <AvatarImage src={professional.avatar} alt={professional.name} />
-                            <AvatarFallback className="rounded-xl bg-muted text-xl">{initials}</AvatarFallback>
+                        <Avatar className="w-12 h-12 rounded-xl ring-2 ring-background">
+                            <AvatarImage src={professional.avatar} alt={professional.name} className="object-cover" />
+                            <AvatarFallback className="rounded-xl bg-muted text-muted-foreground">{initials}</AvatarFallback>
                         </Avatar>
-                        <div className="absolute -bottom-1 -right-1 bg-card rounded-full p-0.5">
-                            <CheckCircle className="w-5 h-5 text-emerald-500" strokeWidth={2} />
+                        <div className="absolute -bottom-1 -right-1 bg-primary rounded-full p-0.5 border-2 border-background shadow-sm">
+                            <CheckCircle className="w-3 h-3 text-primary-foreground" strokeWidth={3} />
                         </div>
                     </div>
 
                     <div className="flex-1 min-w-0">
-                        <h3 className="font-headline font-bold text-foreground text-lg truncate group-hover:text-primary transition-colors">
+                        <h3 className="font-headline font-bold text-foreground text-sm truncate group-hover:text-primary transition-colors">
                             {professional.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground font-medium uppercase truncate">
+                        <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-wide truncate">
                             {professional.role}
                         </p>
                     </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-5">
+                {/* Skills - Compact */}
+                <div className="flex flex-wrap gap-1 mb-3">
                     {professional.skills.slice(0, 3).map((skill) => (
-                        <Badge key={skill} variant="secondary" className="font-semibold text-xs py-1 px-2">
+                        <Badge
+                            key={skill}
+                            variant="secondary"
+                            className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-tight"
+                        >
                             {skill}
                         </Badge>
                     ))}
                 </div>
 
-                <div className="mt-auto space-y-4">
-                    <div className="flex items-center gap-3 text-xs font-medium text-muted-foreground">
-                        <span className="font-bold text-foreground">{satisfaction}%</span>
-                        <span>Satisfação</span>
-                        <Progress value={satisfaction} className="h-1.5 w-full bg-secondary" />
+                {/* Status: Satisfaction Bar */}
+                <div className="mb-3">
+                    <div className="flex justify-start items-end mb-1 gap-2">
+                        <span className="text-[10px] text-foreground font-black">{satisfaction}%</span>
+                        <span className="text-[9px] text-muted-foreground font-bold uppercase tracking-widest">Satisfação</span>
+                    </div>
+                    <Progress value={satisfaction} className="h-1" />
+                </div>
+
+                {/* Footer/Metrics row */}
+                <div className="flex items-center justify-between mt-auto pt-3 border-t border-border">
+                    <div className="flex gap-3">
+                        <div className="flex flex-col">
+                            <span className="text-[9px] text-muted-foreground font-bold uppercase">Resp</span>
+                            <span className="text-[10px] font-bold text-foreground">{professional.averageResponseTime || '30m'}</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-[9px] text-muted-foreground font-bold uppercase">Prazo</span>
+                            <span className="text-[10px] font-bold text-foreground">{professional.averageDeliveryTime || '2d'}</span>
+                        </div>
                     </div>
 
-
-                    <div className="grid grid-cols-3 gap-2 text-left my-auto pt-2">
-                        <div>
-                            <span className="text-xs text-muted-foreground font-bold uppercase">Resp.</span>
-                            <p className="text-sm font-bold text-foreground">{professional.averageResponseTime || '1h'}</p>
-                        </div>
-                        <div>
-                            <span className="text-xs text-muted-foreground font-bold uppercase">Prazo</span>
-                            <p className="text-sm font-bold text-foreground">{professional.averageDeliveryTime || '5 dias'}</p>
-                        </div>
-                        <div className="text-right">
-                            <span className="text-xs text-muted-foreground font-bold uppercase">Valor/h</span>
-                            <p className="text-sm font-bold text-foreground">
-                                R$ {professional.hourlyRate}
-                            </p>
+                    <div className="text-right">
+                        <div className="text-[12px] font-bold text-foreground">
+                            R$ {professional.hourlyRate}<span className="text-[9px] text-muted-foreground font-normal">/h</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="p-4 pt-0">
+            {/* Action Area - Subtle Button */}
+            <div className="px-4 pb-4">
                 <Button
                     variant="outline"
-                    className="w-full h-10 rounded-lg font-bold text-primary border-primary/20 bg-primary/10 hover:bg-primary hover:text-primary-foreground transition-all"
-                    onClick={(e) => { e.stopPropagation(); onRegisterClick(); }}
+                    className="w-full h-8 rounded-lg font-semibold text-[10px] uppercase tracking-wider text-primary border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all shadow-sm"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onRegisterClick();
+                    }}
                 >
                     Passar Demanda
                 </Button>
             </div>
-        </Card>
+        </motion.div>
     );
 };
 

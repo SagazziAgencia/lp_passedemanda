@@ -14,7 +14,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
     return (
         <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="container flex h-14 items-center justify-between">
+            <div className="w-full px-4 sm:px-6 lg:px-8 flex h-14 items-center justify-between">
                 <div className="mr-4 flex items-center">
                     <Link href={ROUTES.HOME} className="flex items-center">
                         <Logo />
