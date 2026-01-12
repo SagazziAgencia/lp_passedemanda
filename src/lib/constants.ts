@@ -46,7 +46,7 @@ export const MOCK_PROS: Professional[] = [
         skills: ['React', 'TypeScript', 'Next.js', 'GraphQL'],
         rating: 4.9,
         experience: '8 anos de experiência em desenvolvimento de aplicações web modernas e escaláveis. Especialista em ecossistema React.',
-        contact: 'lucas.almeida@email.com',
+
         averageResponseTime: '25m',
         averageDeliveryTime: '2d',
         hourlyRate: 250,
@@ -64,7 +64,7 @@ export const MOCK_PROS: Professional[] = [
         rating: 5.0,
         satisfaction: 100,
         experience: '5 anos criando interfaces intuitivas e experiências de usuário memoráveis para startups e grandes empresas.',
-        contact: 'juliana.costa@email.com',
+
         averageResponseTime: '15m',
         averageDeliveryTime: '3d',
         hourlyRate: 180,
@@ -82,7 +82,7 @@ export const MOCK_PROS: Professional[] = [
         rating: 4.8,
         satisfaction: 98,
         experience: '10 anos de experiência em arquitetura de microsserviços, APIs REST/GraphQL e infraestrutura em nuvem.',
-        contact: 'rafael.oliveira@email.com',
+
         averageResponseTime: '1h',
         averageDeliveryTime: '5d',
         hourlyRate: 130,
@@ -98,7 +98,7 @@ export const MOCK_PROS: Professional[] = [
         skills: ['Project Management', 'Agile', 'Scrum', 'Jira'],
         rating: 4.9,
         experience: 'Gerente de projetos certificada (PMP, CSM) com foco em otimizar fluxos de trabalho e garantir entregas de valor.',
-        contact: 'carla.martins@email.com',
+
         averageResponseTime: '10m',
         averageDeliveryTime: 'N/A',
         hourlyRate: 220,
@@ -112,7 +112,7 @@ export const MOCK_PROS: Professional[] = [
         skills: ['React', 'Node.js', 'Vue.js', 'Docker'],
         rating: 4.7,
         experience: 'Desenvolvedor versátil com 6 anos de experiência, apaixonado por construir produtos de ponta a ponta.',
-        contact: 'bruno.gomes@email.com',
+
         averageResponseTime: '35m',
         averageDeliveryTime: '3d',
         hourlyRate: 230,
@@ -128,7 +128,7 @@ export const MOCK_PROS: Professional[] = [
         skills: ['SEO', 'Content Marketing', 'Social Media', 'Google Analytics'],
         rating: 4.9,
         experience: '7 anos ajudando marcas a crescerem online através de estratégias de conteúdo e performance.',
-        contact: 'fernanda.lima@email.com',
+
         averageResponseTime: '20m',
         averageDeliveryTime: '5d',
         hourlyRate: 190,
@@ -143,7 +143,7 @@ export const MOCK_PROS: Professional[] = [
         rating: 5.0,
         satisfaction: 99,
         experience: 'Designer premiado, especializado em criar identidades visuais marcantes e sistemas de marca consistentes.',
-        contact: 'gustavo.pereira@email.com',
+
         averageResponseTime: '50m',
         averageDeliveryTime: '7d',
         hourlyRate: 280,
@@ -160,7 +160,7 @@ export const MOCK_PROS: Professional[] = [
         skills: ['Product Management', 'Agile', 'User Research', 'Roadmap'],
         rating: 4.8,
         experience: 'Líder de produto com histórico de lançamento de produtos digitais de sucesso, do conceito à monetização.',
-        contact: 'mariana.santos@email.com',
+
         averageResponseTime: '30m',
         averageDeliveryTime: 'N/A',
         hourlyRate: 260,
@@ -174,7 +174,7 @@ export const MOCK_PROS: Professional[] = [
         skills: ['React Native', 'TypeScript', 'Firebase', 'GraphQL'],
         rating: 4.9,
         experience: 'Especialista em desenvolvimento de aplicativos móveis multiplataforma com React Native, focado em performance e UX.',
-        contact: 'thiago.alves@email.com',
+
         averageResponseTime: '40m',
         averageDeliveryTime: '4d',
         hourlyRate: 240,
@@ -190,7 +190,7 @@ export const MOCK_PROS: Professional[] = [
         skills: ['Angular', 'TypeScript', 'RxJS', 'NgRx'],
         rating: 4.7,
         experience: '7 anos construindo aplicações enterprise complexas e de alta performance com o framework Angular.',
-        contact: 'beatriz.rocha@email.com',
+
         averageResponseTime: '1h',
         averageDeliveryTime: '3d',
         hourlyRate: 240,

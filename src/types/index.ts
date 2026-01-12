@@ -14,7 +14,7 @@ export type Professional = {
     rating: number;
     satisfaction?: number;
     experience: string;
-    contact: string;
+
     averageResponseTime?: string;
     averageDeliveryTime?: string;
     hourlyRate: number;
