@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useDeferredValue, useCallback } from 'react';
 import {
     Search,
     ArrowRight,
@@ -48,6 +48,7 @@ interface TalentShowcaseProps {
 
 export default function TalentShowcase({ onRegisterClick = () => { } }: TalentShowcaseProps) {
     const [searchTerm, setSearchTerm] = useState('');
+    const deferredSearchTerm = useDeferredValue(searchTerm);
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [selectedPro, setSelectedPro] = useState<Professional | null>(null);
 
@@ -63,11 +64,11 @@ export default function TalentShowcase({ onRegisterClick = () => { } }: TalentSh
         return shuffledPros.filter((pro) => {
             // Text search
             const matchesSearch =
-                searchTerm === '' ||
-                pro.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                pro.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                deferredSearchTerm === '' ||
+                pro.name.toLowerCase().includes(deferredSearchTerm.toLowerCase()) ||
+                pro.role.toLowerCase().includes(deferredSearchTerm.toLowerCase()) ||
                 pro.skills.some((skill) =>
-                    skill.toLowerCase().includes(searchTerm.toLowerCase())
+                    skill.toLowerCase().includes(deferredSearchTerm.toLowerCase())
                 );
 
             // Category filter
@@ -77,12 +78,16 @@ export default function TalentShowcase({ onRegisterClick = () => { } }: TalentSh
 
             return matchesSearch && matchesCategory;
         });
-    }, [shuffledPros, searchTerm, selectedCategory]);
+    }, [shuffledPros, deferredSearchTerm, selectedCategory]);
 
     // Reshuffle function
-    const handleReshuffle = () => {
+    const handleReshuffle = useCallback(() => {
         setShuffledPros(shuffleArray(MOCK_PROS));
-    };
+    }, []);
+
+    const handleSelectPro = useCallback((pro: Professional) => {
+        setSelectedPro(pro);
+    }, []);
 
     return (
         <div className="w-full text-foreground relative z-0">
@@ -238,7 +243,7 @@ export default function TalentShowcase({ onRegisterClick = () => { } }: TalentSh
                                 <TalentCard
                                     key={pro.id}
                                     professional={pro}
-                                    onSelect={() => setSelectedPro(pro)}
+                                    onSelect={() => handleSelectPro(pro)}
                                     onRegisterClick={onRegisterClick}
                                     index={index}
                                 />

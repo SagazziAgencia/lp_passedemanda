@@ -117,4 +117,4 @@ const TalentCard: React.FC<TalentCardProps> = ({ professional, onSelect, onRegis
     );
 };
 
-export default TalentCard;
+export default React.memo(TalentCard);
