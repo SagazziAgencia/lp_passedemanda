@@ -1,0 +1,194 @@
+.sphere-root {
+    --radius: 600px;
+    --viewer-pad: 32px;
+    --overlay-blur-color: #060010;
+    --tile-radius: 30px;
+    --enlarge-radius: 30px;
+    --image-filter: grayscale(1);
+    --unit-x: calc(360deg / var(--segments-x));
+    --unit-y: calc(360deg / var(--segments-y));
+
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sphere-main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    perspective: 1200px;
+    touch-action: none;
+    overflow: hidden;
+}
+
+.stage {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sphere {
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.item {
+    position: absolute;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    --base-rotate-y: calc(var(--unit-y) * (var(--offset-x) + (var(--item-size-x) - 1) * 0.5));
+    --base-rotate-x: calc(var(--unit-x) * (var(--offset-y) - (var(--item-size-y) - 1) * 0.5));
+    transform: rotateY(calc(var(--base-rotate-y) + var(--rot-y-delta, 0deg))) rotateX(calc(var(--base-rotate-x) + var(--rot-x-delta, 0deg))) translateZ(var(--radius));
+}
+
+.item__image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 140px;
+    height: 180px;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.item__image::after {
+    content: "Ver Perfil";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.item__image:hover::after {
+    opacity: 1;
+}
+
+.item__image:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    border-color: rgba(37, 99, 235, 0.5);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+
+.item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: var(--image-filter);
+    transition: filter 0.3s ease;
+    pointer-events: none;
+}
+
+.item__image:hover img {
+    filter: none;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 30%, var(--overlay-blur-color) 100%);
+    opacity: 0.6;
+}
+
+.overlay--blur {
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    -webkit-mask-image: radial-gradient(circle at center, transparent 20%, black 100%);
+    mask-image: radial-gradient(circle at center, transparent 20%, black 100%);
+}
+
+.edge-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 25%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.edge-fade--top {
+    top: 0;
+    background: linear-gradient(to bottom, var(--overlay-blur-color), transparent);
+}
+
+.edge-fade--bottom {
+    bottom: 0;
+    background: linear-gradient(to top, var(--overlay-blur-color), transparent);
+}
+
+.viewer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.sphere-root[data-enlarging="true"] .scrim {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.frame {
+    width: 80%;
+    height: 80%;
+    max-width: 600px;
+    max-height: 800px;
+    pointer-events: none;
+}
+
+.enlarge {
+    pointer-events: auto;
+    border-radius: var(--enlarge-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.enlarge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dg-scroll-lock {
+    overflow: hidden !important;
+}
