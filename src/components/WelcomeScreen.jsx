@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 
 // Componente de Boas-Vindas Full Screen
 function WelcomeScreen({ onClose }) {
@@ -23,7 +22,7 @@ function WelcomeScreen({ onClose }) {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px]"
+          className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px]"
           animate={{
             x: [0, -80, 0],
             y: [0, -40, 0],
@@ -31,7 +30,7 @@ function WelcomeScreen({ onClose }) {
           }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
-        
+
         {/* Grid sutil */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -43,16 +42,61 @@ function WelcomeScreen({ onClose }) {
 
       {/* Conteúdo central */}
       <div className="relative z-10 text-center px-6">
-        {/* Logo/Ícone */}
+        {/* Logo/Ícone e Texto (Entry Animation) */}
         <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-          className="mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 flex justify-center"
         >
-          <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 flex items-center justify-center shadow-2xl shadow-blue-500/30">
-            <Sparkles className="w-12 h-12 text-white" />
-          </div>
+          <motion.div
+            layout
+            className="flex items-center gap-0 bg-white/10 backdrop-blur-xl px-4 py-4 rounded-lg border border-white/20 shadow-2xl overflow-hidden max-w-fit"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Favicon Container */}
+            <motion.div
+              layout
+              initial={{ scale: 0, rotate: -20 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ duration: 0.95, delay: 0.3, type: "spring" }}
+              className="flex-shrink-0 w-20 h-20 flex items-center justify-center relative"
+            >
+              <motion.img
+                src="/favicon.png"
+                alt="PasseDemanda Logo"
+                className="w-18 h-18 object-contain z-10"
+                animate={{
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              {/* Subtle Glow behind favicon - Reduced blur */}
+              <div className="absolute inset-0 bg-blue-500/15 blur-lg rounded-full" />
+            </motion.div>
+
+            {/* Slide-out Text */}
+            <motion.div
+              layout
+              initial={{ width: 0, opacity: 0, x: -10 }}
+              animate={{ width: "auto", opacity: 1, x: 0 }}
+              transition={{
+                delay: 1,
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              className="overflow-hidden whitespace-nowrap"
+            >
+              <div className="pl-4 pr-2">
+                <span className="text-3xl md:text-4xl font-black text-white tracking-tight">
+                  Passe Demanda
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
         {/* Título */}

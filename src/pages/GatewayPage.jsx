@@ -38,19 +38,19 @@ function FloatingParticles({ color, count = 20 }) {
         <motion.div
           key={i}
           className={`absolute w-2 h-2 rounded-full ${color}`}
-          initial={{ 
-            x: Math.random() * 100 + '%', 
+          initial={{
+            x: Math.random() * 100 + '%',
             y: Math.random() * 100 + '%',
             opacity: 0,
             scale: 0
           }}
-          animate={{ 
+          animate={{
             y: [null, Math.random() * -100 - 50 + '%'],
             opacity: [0, 0.8, 0],
             scale: [0, 1.5, 0],
             rotate: [0, 360]
           }}
-          transition={{ 
+          transition={{
             duration: Math.random() * 8 + 12,
             repeat: Infinity,
             delay: Math.random() * 5,
@@ -110,23 +110,23 @@ function SidePanel({
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
         {/* Conteúdo Compacto para Mobile */}
-        <div className="relative z-10 h-full flex flex-col justify-center items-center px-6 py-8">
+        <div className="relative z-10 h-full flex flex-col justify-center items-start px-6 py-8 w-full">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="mb-4 text-center"
+            className="mb-4 flex self-start"
           >
-            <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest text-white bg-white/20 backdrop-blur-sm border border-white/30`}>
-              <Icon className="w-3 h-3" />
+            <span className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest text-white bg-white/30 backdrop-blur-md border border-white/40 shadow-lg shadow-black/20`}>
+              <Icon className="w-3.5 h-3.5" />
               {subtitle}
             </span>
           </motion.div>
 
           {/* Título */}
           <motion.h2
-            className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white mb-3 text-center"
+            className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white mb-3 text-left w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -136,7 +136,7 @@ function SidePanel({
 
           {/* Descrição */}
           <motion.p
-            className="text-xs font-medium text-white/80 max-w-[280px] mb-5 leading-relaxed text-center"
+            className="text-xs font-medium text-white/80 max-w-[280px] mb-5 leading-relaxed text-left w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -149,7 +149,7 @@ function SidePanel({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="flex flex-wrap gap-2 mb-6 justify-center"
+            className="flex flex-wrap gap-2 mb-6 justify-start w-full"
           >
             {features.map((feature, index) => (
               <div
@@ -165,7 +165,7 @@ function SidePanel({
           {/* Botão CTA */}
           <CTAButton
             href={to}
-            className="text-white border-white/50 hover:bg-white hover:text-slate-900 text-xs py-2 px-4"
+            className="bg-transparent border-white/50 text-white hover:bg-blue-600 hover:border-blue-600 text-xs py-2 px-4 transition-all duration-300"
           >
             Continuar
           </CTAButton>
@@ -200,33 +200,35 @@ function SidePanel({
         />
 
         {/* Conteúdo */}
-        <div className="relative z-10 h-full flex flex-col justify-center items-center px-8 lg:px-16">
+        <div className="relative z-10 h-full flex flex-col justify-center items-start px-8 lg:px-16 w-full">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{
-              opacity: isActive ? 1 : 0.7,
-              scale: isActive ? 1 : 0.8,
+              opacity: isActive ? 1 : 0.8,
+              scale: isActive ? 1 : 0.85,
               y: isActive ? 0 : 20
             }}
+            style={{ originX: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-6 text-center"
+            className="mb-6 flex self-start"
           >
-            <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest text-white bg-white/20 backdrop-blur-sm border border-white/30`}>
-              <Icon className="w-4 h-4" />
+            <span className={`inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full text-sm font-black uppercase tracking-widest text-white bg-white/30 backdrop-blur-md border border-white/50 shadow-xl shadow-black/20`}>
+              <Icon className="w-5 h-5" />
               {subtitle}
             </span>
           </motion.div>
 
           {/* Título */}
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white mb-4 text-center"
+            className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white mb-4 text-left w-full"
             initial={{ opacity: 0, y: 30 }}
             animate={{
               opacity: isActive ? 1 : 0.9,
               y: isActive ? 0 : 20,
               scale: isActive ? 1 : 0.95
             }}
+            style={{ originX: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {title}
@@ -234,7 +236,7 @@ function SidePanel({
 
           {/* Descrição */}
           <motion.p
-            className="text-lg md:text-xl font-medium text-white/80 max-w-md mb-8 leading-relaxed text-center"
+            className="text-lg md:text-xl font-medium text-white/80 max-w-md mb-8 leading-relaxed text-left w-full"
             initial={{ opacity: 0, y: 20 }}
             animate={{
               opacity: isActive ? 1 : 0.7,
@@ -253,7 +255,7 @@ function SidePanel({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
-                className="flex flex-wrap gap-3 mb-8 justify-center"
+                className="flex flex-wrap gap-3 mb-8 justify-start w-full"
               >
                 {features.map((feature, index) => (
                   <FeatureCard
@@ -275,12 +277,13 @@ function SidePanel({
               y: isActive ? 0 : 20,
               scale: isActive ? 1 : 0.9
             }}
+            style={{ originX: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex justify-center"
+            className="flex justify-start w-full"
           >
             <CTAButton
               href={to}
-              className="text-white border-white/50 hover:bg-white hover:text-slate-900"
+              className="bg-transparent border-white/50 text-white hover:bg-blue-600 hover:border-blue-600 transition-all duration-300"
             >
               Continuar
             </CTAButton>
@@ -313,18 +316,9 @@ function SidePanel({
 
 export function GatewayPage() {
   const [hovered, setHovered] = useState(null);
-  const [showLogo, setShowLogo] = useState(true);
   const [showWelcome, setShowWelcome] = useState(true);
 
-  // Esconde a logo após interação
-  useEffect(() => {
-    if (hovered) {
-      const timer = setTimeout(() => setShowLogo(false), 500);
-      return () => clearTimeout(timer);
-    } else {
-      setShowLogo(true);
-    }
-  }, [hovered]);
+
 
   // Auto-fecha a mensagem de boas-vindas após 4 segundos
   useEffect(() => {
@@ -345,36 +339,8 @@ export function GatewayPage() {
           <WelcomeScreen />
         )}
       </AnimatePresence>
-      
-      {/* Logo Central Flutuante - Hidden on mobile */}
-      <AnimatePresence>
-        {showLogo && !hovered && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: -20 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none hidden md:flex"
-          >
-            <div className="flex flex-col items-center pointer-events-auto">
-              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20 shadow-2xl">
-                <img src="/favicon.png" alt="PasseDemanda" className="w-10 h-10 rounded-lg" />
-                <span className="text-2xl font-bold text-white">
-                  Passe<span className="text-blue-400">Demanda</span>
-                </span>
-              </div>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="mt-3 text-white/60 text-sm font-medium"
-              >
-                Escolha seu perfil para continuar
-              </motion.p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+
 
       {/* Container Split Screen */}
       <div className="flex flex-col md:flex-row h-full w-full relative z-10">
@@ -429,6 +395,7 @@ export function GatewayPage() {
         className="absolute inset-x-0 flex justify-center z-50 pointer-events-none bottom-4 md:bottom-6"
       >
         <div className="flex items-center bg-white/10 backdrop-blur-md rounded-full border border-white/20 pointer-events-auto gap-3 px-4 py-2 md:gap-6 md:px-6 md:py-3">
+          <img src="/favicon.png" alt="Logo" className="w-5 h-5 md:w-6 md:h-6 object-contain" />
           <span className="text-white/70 text-xs md:text-sm">
             Já tem uma conta?
           </span>
