@@ -2,12 +2,12 @@ import { motion } from 'framer-motion'
 import { CalendarIcon, FileTextIcon } from '@radix-ui/react-icons'
 import { BellIcon, Share2Icon, ShieldCheck, Zap, DollarSign, UserCheck, Globe } from 'lucide-react'
 import { useRef, forwardRef } from 'react'
-import { cn } from "@/lib/utils"
-import { Calendar } from "@/components/ui/calendar"
-import { Marquee } from "@/components/ui/marquee"
-import { AnimatedList } from "@/components/ui/animated-list"
-import { AnimatedBeam } from "@/components/ui/animated-beam"
-import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
+import { cn } from "../lib/utils"
+import { Calendar } from "./ui/calendar"
+import { Marquee } from "./ui/marquee"
+import { AnimatedList } from "./ui/animated-list"
+import { AnimatedBeam } from "./ui/animated-beam"
+import { BentoCard, BentoGrid } from "./ui/bento-grid"
 import { LayeredBackground } from './LayeredBackground'
 
 // --- Background Components ---

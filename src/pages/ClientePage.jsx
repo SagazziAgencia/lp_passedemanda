@@ -1,7 +1,8 @@
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Hero } from '../components/Hero'
 import { Problem } from '../components/Problem'
 import { TestimonialsMarquee } from '../components/TestimonialsMarquee'
-import { PricingSection } from '../components/PricingSection'
 import { FAQSection } from '../components/FAQSection'
 import { VettingProcess } from '../components/VettingProcess'
 import { ReputationSection } from '../components/ReputationSection'
@@ -13,20 +14,29 @@ import { FinalCTA } from '../components/FinalCTA'
 import { SecureDeal } from '../components/SecureDeal'
 import { CTAButton } from '../components/ui/CTAButton'
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Users } from 'lucide-react';
+import { ArrowLeft, Users, Menu, X } from 'lucide-react';
 
 // Header específico para Clientes
 function ClienteHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: "#como-funciona", label: "Como Funciona" },
+    { href: "#beneficios", label: "Benefícios" },
+    { href: "#precos", label: "Planos" },
+    { href: "#faq", label: "FAQ" }
+  ];
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-300 bg-white/80 backdrop-blur-md border-slate-200">
-      <div className="container mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 font-bold text-xl transition-colors text-slate-900 group">
+        <a href="/" className="flex items-center gap-2 font-bold text-base md:text-xl transition-colors text-slate-900 group">
           <img src="/favicon.png" alt="PasseDemanda" className="w-8 h-8 rounded-lg" />
-          <span>Passe<span className="text-blue-600">Demanda</span></span>
+          <span className="hidden sm:inline">Passe<span className="text-blue-600">Demanda</span></span>
         </a>
 
-        {/* Badge de Persona */}
+        {/* Badge de Persona - Desktop */}
         <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-200">
           <Users className="w-4 h-4 text-blue-600" />
           <span className="text-sm font-medium text-blue-700">Área do Cliente</span>
@@ -34,37 +44,105 @@ function ClienteHeader() {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
-          <a href="#como-funciona" className="text-sm font-semibold transition-colors text-slate-600 hover:text-blue-600">Como Funciona</a>
-          <a href="#beneficios" className="text-sm font-semibold transition-colors text-slate-600 hover:text-blue-600">Benefícios</a>
-          <a href="#precos" className="text-sm font-semibold transition-colors text-slate-600 hover:text-blue-600">Planos</a>
-          <a href="#faq" className="text-sm font-semibold transition-colors text-slate-600 hover:text-blue-600">FAQ</a>
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href} className="text-sm font-semibold transition-colors text-slate-600 hover:text-blue-600">
+              {link.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Actions */}
-        <div className="flex items-center gap-3">
+        {/* Actions - Desktop */}
+        <div className="hidden md:flex items-center gap-2 md:gap-3">
           <Link 
             to="/"
-            className="hidden sm:flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+            className="flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Voltar
           </Link>
           <CTAButton
             href="https://app.passedemanda.com"
-            className="px-5 py-2.5 text-xs text-slate-600 border-slate-200 hover:bg-blue-600 hover:border-blue-600 hover:text-white shadow-none"
+            className="px-3 md:px-5 py-2 md:py-2.5 text-xs text-slate-600 border-slate-200 hover:bg-blue-600 hover:border-blue-600 hover:text-white shadow-none"
             showIcon={false}
           >
             Login
           </CTAButton>
           <CTAButton
             href="https://app.passedemanda.com/register"
-            className="px-5 py-2.5 text-xs bg-blue-600 text-white border-blue-600 hover:bg-blue-700 hover:border-blue-700 shadow-none"
+            className="px-3 md:px-5 py-2 md:py-2.5 text-xs bg-blue-600 text-white border-blue-600 hover:bg-blue-700 hover:border-blue-700 shadow-none"
             showIcon={false}
           >
             Começar Agora
           </CTAButton>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+          aria-label="Menu"
+        >
+          {isMenuOpen ? <X className="w-6 h-6 text-slate-700" /> : <Menu className="w-6 h-6 text-slate-700" />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-slate-200 shadow-lg"
+          >
+            {/* Badge de Persona - Mobile */}
+            <div className="flex items-center gap-2 px-4 py-3 bg-blue-50 border-b border-blue-100">
+              <Users className="w-4 h-4 text-blue-600" />
+              <span className="text-sm font-medium text-blue-700">Área do Cliente</span>
+            </div>
+
+            {/* Navigation Links */}
+            <nav className="flex flex-col py-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors border-b border-slate-100"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Actions */}
+            <div className="flex flex-col gap-2 p-4 bg-slate-50">
+              <Link
+                to="/"
+                className="flex items-center justify-center gap-2 py-2 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Voltar
+              </Link>
+              <CTAButton
+                href="https://app.passedemanda.com"
+                className="w-full py-3 text-sm text-slate-600 border-slate-200 hover:bg-blue-600 hover:border-blue-600 hover:text-white shadow-none"
+                showIcon={false}
+              >
+                Login
+              </CTAButton>
+              <CTAButton
+                href="https://app.passedemanda.com/register"
+                className="w-full py-3 text-sm bg-blue-600 text-white border-blue-600 hover:bg-blue-700 hover:border-blue-700 shadow-none"
+                showIcon={false}
+              >
+                Começar Agora
+              </CTAButton>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
@@ -109,7 +187,6 @@ export function ClientePage() {
         <FeaturesBento variant="brand" />
         <ReputationSection variant="white" />
         <VideoTestimonials variant="white" />
-        <PricingSection variant="blue" />
         <FAQSection variant="white" />
         <BlogSection />
         <FinalCTA />

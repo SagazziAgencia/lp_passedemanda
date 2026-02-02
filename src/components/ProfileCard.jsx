@@ -70,6 +70,6 @@ const ProfileCard = React.memo(({
 });
 
 // Since I removed some unused imports and constants, I'll need to re-import cn if I use it.
-import { cn } from '@/lib/utils';
+import { cn } from '../lib/utils';
 
 export default ProfileCard;

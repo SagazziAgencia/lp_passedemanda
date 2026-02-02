@@ -1,68 +1,150 @@
+import { useState } from 'react';
 import { Problem } from '../components/Problem'
 import { TestimonialsMarquee } from '../components/TestimonialsMarquee'
 import { FAQSection } from '../components/FAQSection'
 import { VettingProcess } from '../components/VettingProcess'
 import { ReputationSection } from '../components/ReputationSection'
 import { VideoTestimonials } from '../components/VideoTestimonials'
+import { HeroVideo } from '../components/HeroVideo'
+import { Hero } from '../components/Hero'
 import { BlogSection } from '../components/BlogSection'
 import { FeaturesBento } from '../components/FeaturesBento'
+import { ProfessionalsShowcase } from '../components/ProfessionalsShowcase'
 import { FinalCTA } from '../components/FinalCTA'
 import { SecureDeal } from '../components/SecureDeal'
+import { PricingSection } from '../components/PricingSection'
 import { CTAButton } from '../components/ui/CTAButton'
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Briefcase, TrendingUp, Shield, Wallet, Star, CheckCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowLeft, Briefcase, TrendingUp, Shield, Wallet, Star, CheckCircle, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Header específico para Profissionais
 function ProfissionalHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: "#como-funciona", label: "Como Funciona" },
+    { href: "#beneficios", label: "Benefícios" },
+    { href: "#seguranca", label: "Segurança" },
+    { href: "#faq", label: "FAQ" }
+  ];
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-300 bg-white/80 backdrop-blur-md border-slate-200">
-      <div className="container mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 font-bold text-xl transition-colors text-slate-900 group">
+        <a href="/" className="flex items-center gap-2 font-bold text-base md:text-xl transition-colors text-slate-900 group">
           <img src="/favicon.png" alt="PasseDemanda" className="w-8 h-8 rounded-lg" />
-          <span>Passe<span className="text-blue-600">Demanda</span></span>
+          <span className="hidden sm:inline">Passe<span className="text-blue-600">Demanda</span></span>
         </a>
 
-        {/* Badge de Persona */}
-        <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-full border border-emerald-200">
-          <Briefcase className="w-4 h-4 text-emerald-600" />
-          <span className="text-sm font-medium text-emerald-700">Área do Profissional</span>
+        {/* Badge de Persona - Desktop */}
+        <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-200">
+          <Briefcase className="w-4 h-4 text-blue-600" />
+          <span className="text-sm font-medium text-blue-700">Área do Profissional</span>
         </div>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
-          <a href="#como-funciona" className="text-sm font-semibold transition-colors text-slate-600 hover:text-emerald-600">Como Funciona</a>
-          <a href="#beneficios" className="text-sm font-semibold transition-colors text-slate-600 hover:text-emerald-600">Benefícios</a>
-          <a href="#seguranca" className="text-sm font-semibold transition-colors text-slate-600 hover:text-emerald-600">Segurança</a>
-          <a href="#faq" className="text-sm font-semibold transition-colors text-slate-600 hover:text-emerald-600">FAQ</a>
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href} className="text-sm font-semibold transition-colors text-slate-600 hover:text-blue-600">
+              {link.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Actions */}
-        <div className="flex items-center gap-3">
+        {/* Actions - Desktop */}
+        <div className="hidden md:flex items-center gap-2 md:gap-3">
           <Link 
             to="/"
-            className="hidden sm:flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+            className="flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Voltar
           </Link>
           <CTAButton
             href="https://app.passedemanda.com"
-            className="px-5 py-2.5 text-xs text-slate-600 border-slate-200 hover:bg-emerald-600 hover:border-emerald-600 hover:text-white shadow-none"
+            className="px-3 md:px-5 py-2 md:py-2.5 text-xs text-slate-600 border-slate-200 hover:bg-blue-600 hover:border-blue-600 hover:text-white shadow-none"
             showIcon={false}
           >
             Login
           </CTAButton>
           <CTAButton
             href="https://app.passedemanda.com/register"
-            className="px-5 py-2.5 text-xs bg-emerald-600 text-white border-emerald-600 hover:bg-emerald-700 hover:border-emerald-700 shadow-none"
+            className="px-3 md:px-5 py-2 md:py-2.5 text-xs bg-blue-600 text-white border-blue-600 hover:bg-blue-700 hover:border-blue-700 shadow-none"
             showIcon={false}
           >
             Cadastrar-se
           </CTAButton>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+          aria-label="Menu"
+        >
+          {isMenuOpen ? <X className="w-6 h-6 text-slate-700" /> : <Menu className="w-6 h-6 text-slate-700" />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-slate-200 shadow-lg"
+          >
+            {/* Badge de Persona - Mobile */}
+            <div className="flex items-center gap-2 px-4 py-3 bg-blue-50 border-b border-blue-100">
+              <Briefcase className="w-4 h-4 text-blue-600" />
+              <span className="text-sm font-medium text-blue-700">Área do Profissional</span>
+            </div>
+
+            {/* Navigation Links */}
+            <nav className="flex flex-col py-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors border-b border-slate-100"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Actions */}
+            <div className="flex flex-col gap-2 p-4 bg-slate-50">
+              <Link
+                to="/"
+                className="flex items-center justify-center gap-2 py-2 text-sm text-slate-500 hover:text-slate-700 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Voltar
+              </Link>
+              <CTAButton
+                href="https://app.passedemanda.com"
+                className="w-full py-3 text-sm text-slate-600 border-slate-200 hover:bg-blue-600 hover:border-blue-600 hover:text-white shadow-none"
+                showIcon={false}
+              >
+                Login
+              </CTAButton>
+              <CTAButton
+                href="https://app.passedemanda.com/register"
+                className="w-full py-3 text-sm bg-blue-600 text-white border-blue-600 hover:bg-blue-700 hover:border-blue-700 shadow-none"
+                showIcon={false}
+              >
+                Cadastrar-se
+              </CTAButton>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
@@ -78,7 +160,7 @@ function ProfissionalHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full text-sm font-medium mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium mb-6">
               <TrendingUp className="w-4 h-4" />
               Para Profissionais
             </span>
@@ -91,7 +173,7 @@ function ProfissionalHero() {
             className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
           >
             Transforme suas habilidades em{' '}
-            <span className="text-emerald-600">oportunidades reais</span>
+            <span className="text-blue-600">oportunidades reais</span>
           </motion.h1>
 
           <motion.p 
@@ -112,7 +194,7 @@ function ProfissionalHero() {
           >
             <CTAButton
               href="https://app.passedemanda.com/register"
-              className="px-8 py-4 text-base bg-emerald-600 text-white border-emerald-600 hover:bg-emerald-700 hover:border-emerald-700"
+              className="px-8 py-4 text-base bg-blue-600 text-white border-blue-600 hover:bg-blue-700 hover:border-blue-700"
             >
               Começar Agora
             </CTAButton>
@@ -133,17 +215,26 @@ function ProfissionalHero() {
             className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto"
           >
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600 mb-1">500+</div>
+              <div className="text-3xl font-bold text-blue-600 mb-1">500+</div>
               <div className="text-sm text-slate-500">Profissionais</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600 mb-1">R$2M+</div>
+              <div className="text-3xl font-bold text-blue-600 mb-1">R$2M+</div>
               <div className="text-sm text-slate-500">Em Negócios</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600 mb-1">4.8</div>
+              <div className="text-3xl font-bold text-blue-600 mb-1">4.8</div>
               <div className="text-sm text-slate-500">Avaliação Média</div>
             </div>
+          </motion.div>
+
+          {/* Video */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <HeroVideo />
           </motion.div>
         </div>
       </div>
@@ -199,8 +290,8 @@ function ProfissionalBenefits() {
               viewport={{ once: true }}
               className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
             >
-              <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-4">
-                <benefit.icon className="w-6 h-6 text-emerald-600" />
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <benefit.icon className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-2">{benefit.title}</h3>
               <p className="text-sm text-slate-600">{benefit.description}</p>
@@ -259,11 +350,11 @@ function ComoFuncionaProfissional() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="text-6xl font-bold text-emerald-100 mb-4">{step.number}</div>
+              <div className="text-6xl font-bold text-blue-100 mb-4">{step.number}</div>
               <h3 className="text-xl font-semibold text-slate-900 mb-2">{step.title}</h3>
               <p className="text-slate-600">{step.description}</p>
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-emerald-200 to-transparent" />
+                <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-blue-200 to-transparent" />
               )}
             </motion.div>
           ))}
@@ -300,17 +391,19 @@ function ProfissionalFooter() {
 
 export function ProfissionalPage() {
   return (
-    <div className="min-h-screen font-sans selection:bg-emerald-100 selection:text-emerald-900 bg-white text-slate-900">
+    <div className="min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900 bg-white text-slate-900">
       <ProfissionalHeader />
 
       <main>
-        <ProfissionalHero />
-        <ProfissionalBenefits />
-        <ComoFuncionaProfissional />
+        <Hero variant="white" />
+        <ProfessionalsShowcase />
         <SecureDeal variant="white" />
+        <ComoFuncionaProfissional />
+        <ProfissionalBenefits />
         <ReputationSection variant="white" />
         <TestimonialsMarquee variant="white" />
         <VideoTestimonials variant="white" />
+        <PricingSection variant="blue" />
         <FAQSection variant="white" />
         <BlogSection />
         <FinalCTA />

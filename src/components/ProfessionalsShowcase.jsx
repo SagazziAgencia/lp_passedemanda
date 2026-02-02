@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProfileCard from './ProfileCard';
-import { cn } from '@/lib/utils';
+import { cn } from '../lib/utils';
 import { Code, PenTool, Megaphone, Video, ChevronLeft, ChevronRight } from 'lucide-react';
 import { CTAButton } from './ui/CTAButton';
 
